@@ -132,3 +132,12 @@ for name in mylist:
         print(f"Name is {name} and he is in {count} place in list")
         count += 1
 -------------------------------------------------------------------------------------
+range 
+range(0,10)
+list (range(10)
+123456789
+
+range 0,11,2
+list(rangexx)
+0 2 4 6 8 10
+
