@@ -141,3 +141,28 @@ range 0,11,2
 list(rangexx)
 0 2 4 6 8 10
 
+-----------------------------------------------------------------------------
+reversestring
+
+def reverseString(inputstring):
+
+    mylist = list(inputstring)
+
+    mylist.reverse()
+
+    inputstring = "".join(mylist)
+
+    return inputstring
+
+inputstring = input("enter some words: ")
+
+print("before: ", inputstring)
+print("after: ", reverseString(inputstring))
+~                                                                                                                                                                 
+------------------------------------------------------------
+
+string = "mystring"
+string[::-1]
+'gnirtsym'
+
+~                                    
