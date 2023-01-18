@@ -112,3 +112,11 @@ width = int(input("enter width: "))
 
 multiply_meby3(length, width)
 __________________________________________________________________
+for loop multipys and prints each number
+
+mylist = [103,15,16,17,10,10]
+
+for item in mylist:
+    print(item)
+    print(item * 2)
+
