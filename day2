@@ -68,6 +68,21 @@ elif (userinput % 2) == 0 and userinput > 0:
 elif (userinput % 1) == 0 and userinput > 0:
     print("Positive Odd")
     
+    __________________________________________________
+    if it is multiple of 3 or 5 
+  
+  userinput = input()
+userinput = int(userinput)
+
+if (userinput % 3) == 0 and (userinput % 5) == 0:
+    print("fizzbuzz")
+
+elif (userinput % 3) == 0 and (userinput % 5) != 0:
+    print("fizz")
+
+elif (userinput % 3) != 0 and (userinput % 5) == 0:
+    print("buzz")
+
+else: print(userinput)
     
-    
-    
+    __________________________________________________-
