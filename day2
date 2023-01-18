@@ -119,4 +119,16 @@ mylist = [103,15,16,17,10,10]
 for item in mylist:
     print(item)
     print(item * 2)
+--------------------------------------------------------------------
 
+this is # and he is # in line 
+
+mylist = ["wantland", "bob", "jan", "maquis"]
+
+
+count = 1
+
+for name in mylist:
+        print(f"Name is {name} and he is in {count} place in list")
+        count += 1
+-------------------------------------------------------------------------------------
