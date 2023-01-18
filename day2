@@ -96,3 +96,19 @@ else: print(userinput)
 yournumber = int (input("enter number: "))
 
 multiply_meby3(yournumber)
+
+
+_______________________________________________________________
+
+sqrft length x width 
+
+def multiply_meby3(x, y):
+	total = x * y 
+	print(f"total sqrft :{total} ")
+
+length = int(input("enter length: "))
+width = int(input("enter width: "))
+
+
+multiply_meby3(length, width)
+__________________________________________________________________
