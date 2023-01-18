@@ -1,0 +1,54 @@
+“my string”.split()	
+	[my, string]
+________________________________________________________
+“I was 1 in the year 1991”.replace(“1”, “2”)
+	“I was 2 in the year 2992”
+______________________________________________________________________
+fname-james
+lname-bond
+
+“hello {}{}! how are you today”.format(fname, lname)
+_____________________________________________________________________
+myiplist = "192.168.10.25".split(".")
+	myiplist = [192,168,10,25]
+
+myiplist[172,16,5,5]
+	“.”.join(myiplist)
+		172.16.5.5
+	___________________________________________________________-
+.strip() - removes excess spaces from all parts of the string
+______________________________________________________
+
+	lst = email.split("@")
+	lst = ".".join(lst)
+	lst = str(lst).split(".")
+
+
+VTA station ____________________________
+
+orchestration
+	stats
+	 launch stat
+		template source = url 
+https://git.cybbh.space/CCTC/students/-/raw/master/ops_stations/ops_from_snap.yaml
+
+ name stack WANTLAND_OPS_STATION
+	same vta acc password
+		launc
+
+
+
+___________________________________________________________-
+
+
+#!/usr/bin/python3
+
+userinput = int(input("ENTER A NUM: "))
+
+
+if userinput == 10:
+    print("Congratualtions your number is 10")
+elif userinput > 10:
+    print("wow your old af")
+else:
+    print("your too young")
