@@ -86,3 +86,13 @@ elif (userinput % 3) != 0 and (userinput % 5) == 0:
 else: print(userinput)
     
     __________________________________________________-
+    
+    multiply
+    
+    
+    def multiply_meby3(n):
+	print(n * 3)
+
+yournumber = int (input("enter number: "))
+
+multiply_meby3(yournumber)
