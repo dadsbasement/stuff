@@ -54,8 +54,19 @@ else:
     print("your too young")
     
 _______________________    
-    
-    
+    CHECKING FOR WHAT TYPE OF NUMBER IT IS ODD EVEN NEGATIVE POSITIVE
+    userinput = input()
+userinput = int(userinput)
+if int(userinput) == 0:
+    print("Zero")
+elif (userinput % 2) == 0 and userinput < 0:
+    print("Negative Even")
+elif (userinput % 1) == 0 and userinput < 0:
+    print("Negative Odd")
+elif (userinput % 2) == 0 and userinput > 0:
+    print("Positive Even")
+elif (userinput % 1) == 0 and userinput > 0:
+    print("Positive Odd")
     
     
     
