@@ -81,3 +81,25 @@ print(num_words)
     for line in text:
     	text = line.split()
 	three.append(text[2])
+	
+------------------------------------------------------
+splits txt files into individual words and looks for p and 
+adds it to p_words variable
+
+with open('school_prompt.txt', 'r') as file:
+    data = open('school_prompt.txt', 'r')
+    text = data.read()
+    text = text.split() 
+    p_words = []
+    for bruh in text:
+        if 'p' in bruh:
+            p_words.append(bruh)
+	  
+------------------------------------------------------------------
+adds every 3 word of everyline to a variable
+
+with open('school_prompt.txt', 'r') as file:
+    data = open('school_prompt.txt', 'r')
+    text = data.read()
+    three = [text.split()[2] for text in data]
+-----------------------------------------------------------------
