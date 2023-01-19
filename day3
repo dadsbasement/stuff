@@ -1,0 +1,33 @@
+def guess_number(n):
+    pass
+    userinput = int(input())
+    while userinput != 23:
+        if userinput > 23:
+            print("too high")
+            userinput = int(input())
+        elif userinput < 23:
+            print("too low")
+            userinput = int(input())
+    if userinput == 23:
+        print("WIN")
+
+
+
+guess_number(23)
+
+
+
+-------------------------------------------------------
+
+
+userinput = input()
+mylist = []
+def reverseit():
+    pass
+while userinput != "":
+    userinput = userinput[::-1]
+    mylist.append(userinput)
+    userinput = input()
+print(mylist)
+
+reverseit()
