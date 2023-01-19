@@ -52,6 +52,12 @@ with open('text.txt', 'w') as fp:
      fp.writelines(lines)
 `````````````````````````````````````
 with open ('test.txt','r') as fp:
- fp.readline()
-
+ -fp.readline()
+ -fp.readable()
+ -fp.readlines()
 ----------------------------------------
+copys file and writes to new, uncreated file.
+
+with open('text.txt', 'r') as source, open('copy.txt', 'w') as destination:
+	destination.write(source.read())
+___________________________________________
