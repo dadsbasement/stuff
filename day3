@@ -98,8 +98,9 @@ with open('school_prompt.txt', 'r') as file:
 ------------------------------------------------------------------
 adds every 3 word of everyline to a variable
 
+three = []
 with open('school_prompt.txt', 'r') as file:
-    data = open('school_prompt.txt', 'r')
-    text = data.read()
-    three = [text.split()[2] for text in data]
+    text = file.readlines()
+    for i (#line) in text:
+        three.append(i.split()[2])
 -----------------------------------------------------------------
