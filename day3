@@ -74,3 +74,10 @@ with open('emotion_words.txt', 'r') as file:
         
 print(num_words)
     
+    -------------------------------------------
+    with open('travel_plans.txt', 'r') as fp:
+    text = fp.readlines()
+    three = []
+    for line in text:
+    	text = line.split()
+	three.append(text[2])
