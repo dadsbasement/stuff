@@ -50,4 +50,8 @@ with open('text.txt', 'w') as fp:
      fp.write('First Line\n')
      lines = ['Second line\n', 'Third Line\n', 'Fourth line', 'Last line\n']
      fp.writelines(lines)
+`````````````````````````````````````
+with open ('test.txt','r') as fp:
+ fp.readline()
 
+----------------------------------------
