@@ -61,3 +61,16 @@ copys file and writes to new, uncreated file.
 with open('text.txt', 'r') as source, open('copy.txt', 'w') as destination:
 	destination.write(source.read())
 ___________________________________________
+checks how many numbers are in a text file
+
+num_words = 0 
+with open('emotion_words.txt', 'r') as file:
+    data = open('emotion_words.txt', 'r')
+    data2 = data.read()
+    lines = data2.split()
+    for word in lines:
+     if not word.isnumeric():
+        num_words += 1
+        
+print(num_words)
+    
