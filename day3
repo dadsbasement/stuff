@@ -1,3 +1,6 @@
+keywords for this day   .strip() / .append() / mylist[::-1] (Reverse order)
+
+
 def guess_number(n):
     pass
     userinput = int(input())
@@ -31,3 +34,13 @@ while userinput != "":
 print(mylist)
 
 reverseit()
+
+
+-----------------------------------------------------------
+
+while true
+    break  - stops the while true loop after it is not longer true.
+
+------------------------------------------------------
+
+
