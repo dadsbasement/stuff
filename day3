@@ -87,8 +87,7 @@ splits txt files into individual words and looks for p and
 adds it to p_words variable
 
 with open('school_prompt.txt', 'r') as file:
-    data = open('school_prompt.txt', 'r')
-    text = data.read()
+    text = file.read()
     text = text.split() 
     p_words = []
     for bruh in text:
