@@ -42,5 +42,12 @@ while true
     break  - stops the while true loop after it is not longer true.
 
 ------------------------------------------------------
+opens a document and rights to it in this way
 
+with open('test.txt') as fp:
+	pass  
+with open('text.txt', 'w') as fp:
+     fp.write('First Line\n')
+     lines = ['Second line\n', 'Third Line\n', 'Fourth line', 'Last line\n']
+     fp.writelines(lines)
 
