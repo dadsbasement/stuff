@@ -103,3 +103,13 @@ with open('school_prompt.txt', 'r') as file:
     for i (#line) in text:
         three.append(i.split()[2])
 -----------------------------------------------------------------
+makes a deck of cards with every suit
+
+def makedeck():
+    suits = ['\u2660', '\u2665','\u2666','\u2663']
+    ranks = [ 'A','2','3','4','5','6','7','8','9','10','J',]
+    deck = ['{}{}'.format(rank,suit) for suit in suits for rank in ranks]
+    print(deck)
+
+makedeck()
+-------------------------------------------------------------------------         
