@@ -83,3 +83,16 @@ for count, value in enumerate(values, start=1): +++++++ENUMERATE USUALLY COUNTS 
 >>> ord('*')
 42
 --------------------------------------------------------------
+through bitmanipulation we changed 42 to 43
+>>>a = 42
+
+>>>l = list(bin(a))
+['0', 'b', '1', '0', '1', '0', '1', '0']
+>>> l[-1] = '1'
+>>> l
+['0', 'b', '1', '0', '1', '0', '1', '1']
+>>>a = int(''.join(l),2)
+>>>a
+43
+>>> 
+
