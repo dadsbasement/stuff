@@ -1,5 +1,44 @@
+-----------------------------------------------
+not too important
+
 s = {1,2,3,4,5}
 t = {6,7,8,9,10}
 
 s.union(t)
 {1,2,3,4,5,6,7,8,9,10}
+
+s.difference(t)
+{1,2,3,4,5,}
+
+s.intersection(t)
+{4,5}
+------------------------------------------
+romanNumerals = {'I':1, 'V':5, 'X':10, 'L':50}
+>>> for key, value in romanNumerals.items():
+...     print(key,value)
+... 
+I 1
+V 5
+X 10
+L 50
+---------------------------------------------------
+another way dont understand 
+for key in romanNumerals:
+...     print('{} = {}'.format(key, romanNumerals[key]))
+... 
+I = 1
+V = 5
+X = 10
+L = 50
+-----------------------------------------------
+numlist = [4,9,99,2,3]
+
+sorted(numlist)
+
+numlist.sort() +++creates new list++++
+------------------------------------------
+umlist
+[1, 4, 7, 9, 11, 13, 24]
+>>> sorted(numlist, reverse=True)
+[24, 13, 11, 9, 7, 4, 1]
+>>> 
