@@ -48,3 +48,23 @@ result = sum([x for x in range(2,1001,2)])
 >>> result
 250500
 -------------------------------------------
+ with any given number between 0-255 the 
+ code 'inverts' or subtracts 255 from it and remains in the same
+ list ( this code only works with a checker or preset l variables"
+ 
+def invert(l):
+    for numbers in range(0, len(l)):
+        l[numbers] = str(255 - int(l[numbers]))
+    pass
+
+this code does the same thing but appends it to a new list
+
+def inverted(l):
+    listy = []
+    for numbers in range(0, len(l)):
+        newlist = str(255 - int(l[numbers]))
+        listy.append(newlist)
+    return(listy)
+
+   pass
+---------------------------------------------------------
