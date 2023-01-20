@@ -67,4 +67,17 @@ def inverted(l):
     return(listy)
 
    pass
+   ``````````````````````````````````````````````````````````````
+  return [str(255 int(numbers)) for numbers in l]
+  
+   this returns a new list of inverted integers without a list being named. 
+   
 ---------------------------------------------------------
+for count, value in enumerate(values, start=1): +++++++ENUMERATE USUALLY COUNTS FROM 0 UNLESS SPECIFIED)+++++++++
+...     print(count, value)
+... 
+1 a
+2 b
+3 c
+-------------------------------------------------------------
+
