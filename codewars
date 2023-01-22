@@ -1,0 +1,16 @@
+this splits a string after however many letters defined in parts length
+
+s = "whatisgoinonman"
+part_length = 2
+def split_in_parts(s, part_length):
+    counts = 0
+    answer = ""
+    for i in s:
+        if counts < part_length:
+            answer += i
+            counts += 1
+        else:
+            answer = answer + " "  + i
+            counts = 1
+    return answer
+print(split_in_parts(s, part_length))
