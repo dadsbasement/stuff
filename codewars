@@ -14,3 +14,25 @@ def split_in_parts(s, part_length):
             counts = 1
     return answer
 print(split_in_parts(s, part_length))
+------------------------------------------------------------
+turns any input into a string, the parses through and looks for where two even
+numbers are next to each other and adds an '*'
+
+def asterisc_it(n):
+    # Turn any input into a single string.
+    if type(n) is list:
+        n = "".join([str(x) for x in n])
+    else:
+        n = str(n)
+    
+    # Loop over characters and insert * where needed.
+    ret = []
+    for i in range(len(n) - 1):
+        if n[i] in "02468" and n[i + 1] in "02468":
+            ret.append(n[i] + "*")
+        else:
+            ret.append(n[i])
+    ret.append(n[-1])
+    
+    return "".join(ret)
+
