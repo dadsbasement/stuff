@@ -59,8 +59,32 @@ return tuple(strng.split())
 uhhh = tuple(strng.split(" "))
     return uhhh
 ------------------------------------------------------------------------
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Given a dictionary (catalog) whose keys are product names and values are product prices per unit and a list
 of tuples (order) of product names and quantities, compute and return the total value of the order
+[
+('AMD Ryzen 5 5600X', 5), 
+('Intel Core i9-9900K', 3)
+]
+
+Example result:
+
+2540.45
+
+total = []
+for key in catalog:
+  for item in order:
+    if item[0] == key:
+      total.append(catalog[key] * item[1])
+return sum(total)
+````````````````````````````````````````````
+total = 0
+for product, quantity in order:
+  total += catalog[product] * quantity
+return total
+````````````````````````````````````````````
+return sum(catalog[product] * quantity for product, quantity in order)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ------------------------------------------------------------------------
 Given a filename, open the file and return the length of the first line in the file excluding the line terminator.
 
@@ -100,3 +124,11 @@ if miltime >= 0o0300 and miltime <= 1159:
         return("Good Night")
   NOTE 0o0 is in front of leading zeroes.
 ----------------------------------------------------------------------------------
+Given the argument numlist as a list of numbers, return True if all numbers in the list are NOT negative.
+If any numbers in the list are negative, return False.
+
+for numbers in numlist:
+        if numbers < 0:
+            return(False)
+        else: return(True)
+ -----------------------------------------------------------------------------------------
