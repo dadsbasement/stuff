@@ -26,13 +26,30 @@ def asterisc_it(n):
         n = str(n)
     
     # Loop over characters and insert * where needed.
-    ret = []
+    list = []
     for i in range(len(n) - 1):
         if n[i] in "02468" and n[i + 1] in "02468":
-            ret.append(n[i] + "*")
+            list.append(n[i] + "*")
         else:
-            ret.append(n[i])
-    ret.append(n[-1])
+            list.append(n[i])
+    list.append(n[-1])
     
     return "".join(ret)
 
+-----------------------------------------------------------------------
+In a given string of letters ATCG they are added to a list and flipped
+with their corresponding 'dna' letter
+AKA flip a string of chars with another set of chars
+
+def DNA_strand(dna):
+    letter = ''
+    for d in dna:
+            if d is "A":
+                letter += 'T'
+            elif d is "T":
+                letter += 'A'
+            elif d is "C":
+                letter += 'G'
+            elif d is "G":
+                letter += 'C'
+    return letter
