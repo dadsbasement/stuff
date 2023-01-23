@@ -1,0 +1,86 @@
+Given the floatstr, which is a comma separated string of floats, return a list with each of the floats in the argument as elements in the list.
+
+newlist[]
+for y in floatstr.split(','):
+  newlist.append(float(y))
+return newlist
+```````````````````````
+def q1(floatstr):
+    floatstr = [float(value) for value in floatstr.split(',')]
+    return(floatstr)
+------------------------------------------------------------------------------------
+Given the variable length argument list, return the average of all the arguments as a float
+s = 0
+for arg in args:
+  s = s + arg
+ return s/len(args)
+ ````````````````````````````
+ def q1(*args):
+    sum_num = 0
+    for nums in args:
+        newargs = int(nums)
+        sum_num = sum_num + newargs
+        lengths = len(args)
+        lengths = int(lengths)
+        average = sum_num / lengths
+        average = float(average)
+    return average
+    pass
+-------------------------------------------------------------------------------------
+Given a list (lst) and a number of items (n), return a new list containing the last n entries in lst.
+
+return lst[-n:len(lst)]
+````````````````````````````
+def q1(lst,n):
+    count = 0
+    laststuff = lst[::-1]
+    mylist = []
+    while count < n:
+        mylist.append(laststuff[count])
+        count += 1
+        
+    return(mylist[::-1])
+    pass
+------------------------------------------------------------------
+Given an input string, return a list containing the ordinal numbers of each character in the string in the order found in the input string.
+
+newlist = []
+for i in list(strng):
+  newlist.append(ord(i))
+return newlist
+```````````````````````````````````````````````````
+listy = [ord(words) for words in strng]
+    return listy
+-----------------------------------------------------------------------
+Given an input string, return a tuple with each element in the tuple containing a single word from the input string in order.
+
+return tuple(strng.split())
+```````````````````````````
+uhhh = tuple(strng.split(" "))
+    return uhhh
+------------------------------------------------------------------------
+Given a dictionary (catalog) whose keys are product names and values are product prices per unit and a list
+of tuples (order) of product names and quantities, compute and return the total value of the order
+------------------------------------------------------------------------
+Given a filename, open the file and return the length of the first line in the file excluding the line terminator.
+
+with open(filename) as fp:
+  x = fp.readline()
+  y = len(x) -1
+  return y
+  ````````````````````````````````````
+     with open('test.txt','r') as f:
+        t = f.read()
+        l = t.splitlines()
+    return(len(l[0]))
+   -------------------------------------------------------------------------------
+   Given a filename and a list, write each entry from the list to the file on separate lines until a case-insensitive entry of "stop" is found in the list.
+   If "stop" is not found in the list, write the entire list to the file on separate lines.
+   
+   with open(filename, 'w') as file:
+    for words in lst:
+      if words.lower() == 'stop':
+        break
+    file.write(f'{item}\n')
+    ----------------------------------------------------------------------------------
+   
