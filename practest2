@@ -1,3 +1,15 @@
+
+isnumeric is for strings isdigit is for list.
+
+email adresss 
+split @
+join 
+split .
+
+tuple() not indexed based
+
+
+
 Given a string of multiple words separated by single spaces, return a new string with the sentence reversed. 
 The words themselves should remain as they are.
 For example, given 'it is accepted as a masterpiece on strategy',
