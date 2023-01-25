@@ -1,0 +1,16 @@
+
+
+
+history | grep (prevcommand)
+ssh student@ip #tag
+CRTL + R + #tag = pulls up ssh cmd
+
+man bash
+man find --- opens man page for find command
+G - move to end of man page
+g - move to start oof man page
+/(pattern)
+shift+n moves between search result
+
+ss64.com/bash
+curl cht.sh/cmd
