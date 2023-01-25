@@ -14,3 +14,22 @@ shift+n moves between search result
 
 ss64.com/bash
 curl cht.sh/cmd
+
+builtin cmds have no 'man' pages
+  use help (cd)
+ 
+ touch -t(#timestamp) yyyymmddhhmm.ss
+ mkdir -p
+ rm -rf
+ ls -lisa
+ cd ~/ = cd home
+ cd - = last path i was at even if its 20 dirs dep
+ 
+ symbolic link - shortcut
+ hard link- persistent changes to this is changes to actual file.
+ 
+ kill -9 pid
+ pkill name
+ 
+ sudo !! 
+  !!= prevcmd
