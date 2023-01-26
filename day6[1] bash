@@ -83,3 +83,47 @@ uniq -D
 shows duplicates
 uniq -d
 shows duplicates 1 time
+
+--------------------------------------------------------
+i love tea i love tea so much i will die for tea
+
+sed 's/tea/coffee/' tea.txt
+
+i love coffee i love tea so much i will die for tea
+
+only replaces  first instances on each line
+
+/g at end globally replaces tea with coffee.
+can put a number /2 instead of /g for increment replacements on each line
+
+sed 's/tea/coffee/g' tea.txt
+i love coffee i love coffee so much i will die for coffee.
+
+sed 's/tea/coffee/2' tea.txt
+i love coffee i love coffee so much i will die for tea.
+-----------------------------------------------------------
+IF STATEMENT
+
+if [[conditions]]; then
+    commands
+elif [[conditions]]; then
+    commands
+else 
+    commands
+fi
+````````````````````````````````
+#!/bin/bash
+
+if [[ -f /etc/passwd]]; then
+    echo "file /etc/passwd exsists"
+elif [[ ! -f /etc/passwd]]; then
+    echo "file /etc/passwd doesnt"]]
+else 
+    echo "ERRPR"
+fi
+``````
+chmod +x ifstatement.sh
+./ifstatement.sh
+---------------------------------------------
+p= $(ps -elf)
+echo "$p"
