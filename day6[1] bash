@@ -1,0 +1,54 @@
+
+awk  [options]  selection_criteria{action} input-file > outputfile
+awk -F: ‘{print $1}’
+awk -F: ‘($3==0) {print $1}’ /etc/passwd
+```````````````````````````````````````````````````````````
+coffeeshop.txt
+mike manager store 450000
+joey barista store 45845
+foxdad clerk sales 132334
+IN AWK SPACES ARE THE FIELD SEPERATOR
+
+awk '/manager/ {print}' coffeeshop.txt
+    mike manager store 450000
+
+awk '/manager|clerk/ {print}' coffeshop.txt
+    mike manager store 450000
+    foxdad clerk sales 132334
+    
+awk '{print $1.$4}' coffeshop.txt
+
+awk '{print NR,$0}' coffeshop.txt
+1 mike manager .......
+2 .........
+3 .......
+4 .........
+
+awk '{print NR,$NF}' coffeeshop.txt
+1 45000
+2 45845
+3 132334
+$NF prints last field
+ NF prints number of fields
+````````````````````````````````````````````````````````````
+awk 'NR==2, NR==3 {print NR,$0}' coffeeshop.txt
+2 joey barista store 45845
+3 foxdad clerk sales 132334
+-------------------------------------------------------------------
+
+SORT
+coffeee.txt
+black tea 
+black coffee
+0black coffee
+1black tea
+
+sort coffee.txt
+0black coffee
+1black tea
+black coffee
+black tea
+
+
+
+
