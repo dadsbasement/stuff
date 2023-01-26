@@ -49,6 +49,37 @@ sort coffee.txt
 black coffee
 black tea
 
+sort -o menu.txt coffee.txt
+sorts and overwrites to menu
 
+sort by column
+sort -k 2 coffeeshop.ttxt
+    joey barista store 45845
+    foxdad clerk sales 132334
+    mike manager store 450000
+    
+sort -u 
+removes duplicates and sorts 
 
+------------------------------------------------------------
 
+abcd.txt
+A
+A
+A
+b
+b
+b
+b
+a
+
+UNIQ
+uniq -c abcd.txt
+4 b
+1a
+3 A
+
+uniq -D 
+shows duplicates
+uniq -d
+shows duplicates 1 time
