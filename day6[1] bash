@@ -40,7 +40,7 @@ SORT
 coffeee.txt
 black tea 
 black coffee
-0black coffee
+0black coffee=
 1black tea
 
 sort coffee.txt
@@ -60,6 +60,12 @@ sort -k 2 coffeeshop.ttxt
     
 sort -u 
 removes duplicates and sorts 
+------------------------------------------------------------------------
+
+echo "Tea is better than  coffee" | awk '{$1="Coffee";$5="tea";print}'
+Coffee is better than tea
+
+
 
 ------------------------------------------------------------
 
@@ -76,7 +82,7 @@ a
 UNIQ
 uniq -c abcd.txt
 4 b
-1a
+1 a
 3 A
 
 uniq -D 
@@ -127,3 +133,10 @@ chmod +x ifstatement.sh
 ---------------------------------------------
 p= $(ps -elf)
 echo "$p"
+
+-------------------------------------------
+
+sed '/crazy/d'
+changes OUTPUT to remove lines with crazy
+
+cat -n
