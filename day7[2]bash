@@ -1,0 +1,45 @@
+
+sub1 (){
+        name="JOHN"
+        echo $name
+}
+
+sub2 (){
+        name="John"
+        echo "my name is $name"
+}
+
+sub3 (){
+        echo 'my name is' $name
+}
+
+sub4 (){
+        name="JOHN"
+        echo "my name is $nameny5"
+        echo "my name is ${name}y5"
+}
+
+sub5 () {
+        name="John"
+        echo ${name:0:2}
+}
+
+sub6 () {
+        adj=("sus" "based" "cap")
+        echo "Kanuck is {$adj[0]}, Place is ${adj[0]}, and Lawarence is ${adj[2]}. Who knew?!"
+}
+sub1
+sub2
+sub3
+sun4
+sub5
+sub6
+
+JOHN
+my name is John
+my name is John
+my name is 
+my name is JOHNy5
+Jo
+Kanuck is sus, Place is sus, and Lawarence is cap. Who knew?!
+---------------------------------------------------------------------------------------------------------
