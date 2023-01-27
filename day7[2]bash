@@ -1,4 +1,33 @@
 
+vara="HELLO WORLD"
+anothervar=42
+
+echo $anothervar
+42
+
+echo $vara
+HELLO WORLD
+
+no spaces
+
+$? exit status code 0 represents code executed perfectly
+$0 represents the script name
+$# represents the number of arguments passed to shell script
+$$ gives the pid  of the current shell
+
+declare functions first then call it
+
+function name {
+  shit
+  }
+ 
+ name
+  
+function name() {
+  shit
+  }
+ name
+ ----------------------------------------------------------------------------------------
 sub1 (){
         name="JOHN"
         echo $name
