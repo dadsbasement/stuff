@@ -1,3 +1,6 @@
+man find | egrep "keyword"
+
+
 1  Brace expansion is a mechanism by which arbitrary strings may be generated, for commands that will take multiple arguements.
 For the below examples, the first example is equivalent to the second command.
 Activity: Using Brace-Expansion, create the following directories within the $HOME directory:
@@ -33,3 +36,23 @@ Use only the find and cp commands. You will need to utilize the -exec option on 
 find $HOME/1123 -name "*.txt" ! -name "*~*" -exec cp {} $HOME/CUT/ \;
 
 -exec is an option of find
+----------------------------------------------------------------------------------------------------
+6 Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename 
+(not absolute path), and the inode number, separated by newlines.
+123 file1
+456 file2
+789 file3
+
+find /var -empty -printf '%i %f\n'
+-------------------------------------------------------------------------------------------------------
+7   Using ONLY the find command, find all files on the system with inode 4026532575 and print only the filename to the screen,
+not the absolute path to the file, separating each filename with a newline. Ensure unneeded output is not visible.
+
+find / -inum 4026532575 -exec rm -i {} \;
+find / inum 4026532575 
+------------------------------------------------------------------------------------------------
+8   Using only the ls -l and cut Commands, write a BASH script that shows all filenames with extensions ie: 1.txt, etc., but no directories, 
+in $HOME/CUT Write those to a text file called names in $HOME/CUT directory. Omit the names filename from your output.
+
+
+ 
