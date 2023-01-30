@@ -2,3 +2,34 @@ for item in list
 do
 commands
 done
+
+if [[condition]] then 
+  break
+fi
+
+
+if [[condition]] then 
+  continue
+fi
+
+
+while loop
+
+counter=1       (less than or equal to)
+while [[ counter -le 10]]  or -gt
+do
+  echo $counter
+  ((counter++))
+done
+echo "All done!"
+
+forloop-----------
+for i in $( ls ); do
+echo item: $i
+done
+
+
+for i in `seq 1 10`;
+do
+    echo $i
+done
