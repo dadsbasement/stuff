@@ -1,0 +1,52 @@
+9   Write a Bash script using "Command Substitution" to replace all passwords, using openssl, from the file $HOME/PASS/shadow.txt with the MD5 encrypted password: Password1234, with salt: bad4u
+    Output of this command should go to the screen/standard output.
+    You are not limited to a particular command, however you must use openssl. Type man openssl passwd for more information.
+
+  awk -v hh=$(openssl passwd -1 -salt bad4u Passsword1234 -F: '{OFS=":"}{$2=hh}{print}' ~/PASS/shadow.txt
+-------------------------------------------------------------------------------------------------------------------------------
+10  Using ONLY sed, write all lines from $HOME/passwd into $HOME/PASS/passwd.txt that do not end with either /bin/sh or /bin/false.
+  sed -e '/\/bin\/sh/d' -e '/\/bin\/false/d'  $HOME/passwd > $HOME/PASS/passwd.txt
+----------------------------------------------------------------------------------------------------------
+11 Write a script that will do the following.
+
+    Write a script which will copy the last entry/line in the passwd-like file specified by the $1 positional parameter
+    Modify the copied line to change:
+        User name to the value specified by $2 positional parameter
+        Used id and group id to the value specified by $3 positional parameter
+        Home directory to a directory matching the user name specified by $2 positional parameter under the /home directory (i.e. if the $2 was 'Chris', the new line would have /home/Chris as its home directory)
+        The default shell to `/bin/bash'
+    Append the modified line to the end of the file
+
+  find $HOME -type f -name "*.bin"  | awk -F /  -v OFS=/ '{NF--; print}' | sort -u
+-------------------------------------------------------------------------------------------
+12  Write a script which will copy the last entry/line in the passwd-like file specified by the $1 positional parameter
+    Modify the copied line to change:
+        User name to the value specified by $2 positional parameter
+        Used id and group id to the value specified by $3 positional parameter
+        Home directory to a directory matching the user name specified by $2 positional parameter under the /home directory (i.e. if the $2 was 'Chris', the new line would have /home/Chris as its home directory)
+        The default shell to `/bin/bash'
+    Append the modified line to the end of the file
+  
+  tail -n1 $1 | awk -F: -v nn=$2 -v ii=$3 '{OFS=":"}{$1=nn;$3=$4=ii;$6="/home/"nn;$NF="/bin/bash";print}' >> $1
+  
+  ----------------------------------------------------------------------------------------------------------------
+  13  Find all executable files under the following four directories:
+    /bin
+    /sbin
+    /usr/bin
+    /usr/sbin
+Sort the filenames with absolute path, and get the md5sum of the 10th file from the top of the list.
+
+var=$(find /bin /sbin /usr/bin /usr/sbin -type f -executable | sort | awk 'NR==10')
+md5sum $var | awk -F" " '{print $1}'
+
+-------------------------------------------------------------------------------------------------------------------
+14  Using any BASH command complete the following:
+    Sort the /etc/passwd file numerically by the GID field.
+    For the 10th entry in the sorted passwd file, get an md5 hash of that entry’s home directory.
+    Output ONLY the MD5 hash of the directory's name to standard output.
+    
+    var=$(sort -n -t: -k 4  /etc/passwd | awk 'NR==10' | awk -F: '{print $6}')
+    echo "$var" | md5sum | awk -F" " '{print $1}'
+    
+------------------------------------------------------------------------------------------------------------------
