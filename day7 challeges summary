@@ -1,3 +1,7 @@
+awk command - https://www.digitalocean.com/community/tutorials/awk-command-linux-unix
+
+
+
 9   Write a Bash script using "Command Substitution" to replace all passwords, using openssl, from the file $HOME/PASS/shadow.txt with the MD5 encrypted password: Password1234, with salt: bad4u
     Output of this command should go to the screen/standard output.
     You are not limited to a particular command, however you must use openssl. Type man openssl passwd for more information.
