@@ -1,0 +1,128 @@
+xfreerdp /u:student /v:<10.50.30.229> /glyph-cache /dynamic-resolution /clipboard00 ÷ 100 = 21 (Not Leap)
+
+Get-Help about_*
+ExecutionPolicy
+
+update-help
+
+Get-help *PROCESS*
+
+Set-Variable
+New-Variable
+Remove-Varible
+
+New-Variable -Name "zipcode" -Value 98033
+
+Get-Alias 
+set-alias edit notepad.exe
+del alias:edit
+
+Get-Command 
+Get-Command -Noun Process
+
+#GET A LIST OF SERVICES
+Get-Service
+
+
+Read-Host = userinput
+
+$alias:dir
+  Get-Childitem
+$alias:
+
+get-alias -Definition get-childitem
+
+cmds vs cmdlets
+ ``````````````
+ cmdlet native to power shell
+ 
+ function 
+ -similar to a cmdlet but writteen in powershell script language
+ 
+ command
+  refer a generic term for a terms 
+
+
+all variables that are called need to be prefaced with a $
+
+$total = 150 
+$diff = 0.25
+
+$result = total * $diff
+
+$result
+
+$text = "$result is {0:0%} of $total" -f $diff
+        37.5 is 25% of 150 
+       result   diff   total
+       
+multiple values can be assigned (pointing to next variable)
+$x = $y = $z = 10
+
+````````````````
+$var, $var2 = 50, 100
+
+$name = "john"
+write-host " hello $name"
+  hello john
+write-host 'hello $name'
+  hello $name
+------------------------------------------
+test-path  if exsits
+get-variable x 
+x   value 10 
+
+$$ last token from previous commabn
+$? exit status
+$^ First token from previous command write-host (var blah blah)
+$_ object from current pipeline
+$args list of undeclared parameters
+$true
+$false
+$home home dir
+$input enumerates all input passed to a function
+$null = /dev/null
+$profile path to default powershell profile  
+$PSVersionTable details about pwershell 
+$pwd full path to current working directory
+-
+$env:var = "words"
+------------------------------------------------------------
+PS C:\Users\student> $x= Get-Process
+
+PS C:\Users\student> $x -is [array]
+True
+
+PS C:\Users\student> 4 -is [int]
+True
+
+$x.count (for get-process it is counting each line)
+121
+
+$array = 1,2,3,4
+$array = 1..4
+$array
+1
+2
+3
+4
+
+$array2 = "world, "hello", 5, 10, (Get-Date)
+array2[4].Dayofweek
+wednesday
+
+$array2[-1]
+#(Get-date)
+wenesday feb blah blah 
+
+$x = Get-Process
+$x[1,4,8,12]
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                     
+-------  ------    -----      -----     ------     --  -- -----------                                     
+ 1  396      17     1940       2360               132   2 csrss                                           
+ 4  428      16     4008       8376       2.33   5816   2 ctfmon                                          
+ 8 2000      76    35976      67040      38.97   5396   2 explorer                                        
+12  86       11     1784        268              4116   0 GoogleCrashHandler   
+
+-----------------------------------------------------------------
