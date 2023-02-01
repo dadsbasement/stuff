@@ -1,0 +1,46 @@
+xfreerdp /u:student /v:<10.50.30.229> /glyph-cache /dynamic-resolution /clipboard
+
+Get-Help about_*
+ExecutionPolicy
+
+update-help
+
+Get-help *PROCESS*
+
+Set-Variable
+New-Variable
+Remove-Varible
+
+New-Variable -Name "zipcode" -Value 98033
+
+Get-Alias 
+set-alias edit notepad.exe
+del alias:edit
+
+Get-Command 
+Get-Command -Noun Process
+
+#GET A LIST OF SERVICES
+Get-Service
+
+
+Read-Host = userinput
+
+$alias:dir
+  Get-Childitem
+$alias:
+
+get-alias -Definition get-childitem
+
+cmds vs cmdlets
+ ``````````````
+ cmdlet native to power shell
+ 
+ function 
+ -similar to a cmdlet but writteen in powershell script language
+ 
+ command
+  refer a generic term for a terms 
+
+
+all variables that are called need to be prefaced with a $
