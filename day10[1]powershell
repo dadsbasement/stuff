@@ -80,11 +80,12 @@ get-childitem | sort-object -property length -descending
 4
 6
 7
-"1","4","7", "10" | sort-object
+"1","4","7","10" | sort-object
 1
 10
 4
 7
+
 "1","4","7", "10" | sort-object -property { [Int]$_ }
 turns the next string into a integer for sorting
 
@@ -101,4 +102,102 @@ turns the next string into a integer for sorting
 
  Get-Variable | Sort-Object -Property Name | Format-Table Name, Description -AutoSize -Wrap
  
+ Get-Service | Group-Object Status
+ shows a table with an array in it.
  
+ (Get-Service | Group-Object Status -AsHashTable -AsString).Running
+ shows only running services 
+ 
+ $_ is a a variable that iterates over each object/element passed to it.
+ 
+ Get-Process | Where-Object {$_.Name -notlike "powershell*"} | sort-object ID -descending
+ get every process thats not powershell
+ 
+ 
+ Grabs last two services
+PS C:\Users\student> get-service | Select-Object -last 2
+
+Status   Name               DisplayName                           
+------   ----               -----------                           
+Stopped  XboxGipSvc         Xbox Accessory Management Service     
+Stopped  XboxNetApiSvc      Xbox Live Networking Service          
+
+Get-Process | Where-Object -Property StartTime | Sort-Object starttime | Select-Object -first 10 | format-table processname, starttime
+getting the processes in a format table the first 10 that are the oldest.
+
+ ----------------------------------------------------------------------------------------
+ 
+Get-Service | Select-Object -First 10 | ForEach-Object {"The service {0} is called {1}: {2}" -F $_.Name, $_.DisplayName, $_.Status}
+
+The service AarSvc_22622ea is called Agent Activation Runtime_22622ea: Stopped
+The service AJRouter is called AllJoyn Router Service: Stopped
+The service ALG is called Application Layer Gateway Service: Stopped
+The service AppIDSvc is called Application Identity: Stopped
+
+PS C:\windows\system32> 1..10 | ForEach-Object { $_ * 2 }
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+
+
+PS C:\windows\system32> 1,2,2,3,1,1 | Sort-Object | Group-Object
+
+Count Name                      Group                                                                                                                 
+----- ----                      -----                                                                                                                 
+    3 1                         {1, 1, 1}                                                                                                             
+    2 2                         {2, 2}                                                                                                                
+    1 3                         {3}                                                                                                                   
+
+
+Get-Childitem | Measure-Object Length
+ count all files in dir 
+
+Get-Process | Where-Object -Property StartTime | Sort-Object starttime | Select-Object -first 1 -last 1 | format-table processname, starttime
+ (Where-Object) filters idle
+ Get-Process 
+ProcessName   StartTime         
+-----------    ---------           
+Registry       1/18/2023 1:45:46 PM
+powershell_ise 2/2/2023 10:28:04 AM
+
+----------------------------------------------------------------------------------
+Get-Hotfix
+
+Source        Description      HotFixID      InstalledBy          InstalledOn               
+------        -----------      --------      -----------          -----------               
+WIN-OPS       Update           KB5020872     NT AUTHORITY\SYSTEM  12/24/2022 12:00:00 AM    
+WIN-OPS       Security Update  KB4537759                          5/11/2020 12:00:00 AM     
+WIN-OPS       Security Update  KB4557968                          5/11/2020 12:00:00 AM     
+WIN-OPS       Security Update  KB4560366     NT AUTHORITY\SYSTEM  6/25/2020 12:00:00 AM     
+WIN-OPS       Security Update  KB4561600     WIN-OPS\Administr... 6/25/2020 12:00:00 AM     
+WIN-OPS       Update           KB4577586     NT AUTHORITY\SYSTEM  12/23/2022 12:00:00 AM    
+WIN-OPS       Update           KB5006120     NT AUTHORITY\SYSTEM  12/23/2022 12:00:00 AM    
+WIN-OPS       Update           KB5007115     NT AUTHORITY\SYSTEM  12/23/2022 12:00:00 AM    
+WIN-OPS       Security Update  KB5012170     NT AUTHORITY\SYSTEM  12/24/2022 12:00:00 AM    
+WIN-OPS       Update           KB5015684     NT AUTHORITY\SYSTEM  12/24/2022 12:00:00 AM    
+WIN-OPS       Security Update  KB5021233     NT AUTHORITY\SYSTEM  12/24/2022 12:00:00 AM    
+WIN-OPS       Update           KB5020372     NT AUTHORITY\SYSTEM  12/23/2022 12:00:00 A
+
+ Get-Hotfix | Sort-Object -Property  InstalledOn | Format-Table HotFixID, InstalledOn
+
+HotFixID  InstalledOn           
+--------  -----------           
+KB4537759 5/11/2020 12:00:00 AM 
+KB4557968 5/11/2020 12:00:00 AM 
+KB4560366 6/25/2020 12:00:00 AM 
+KB4561600 6/25/2020 12:00:00 AM 
+KB4577586 12/23/2022 12:00:00 AM
+KB5006120 12/23/2022 12:00:00 AM
+KB5007115 12/23/2022 12:00:00 AM
+KB5020372 12/23/2022 12:00:00 AM
+KB5020872 12/24/2022 12:00:00 AM
+KB5012170 12/24/2022 12:00:00 AM
+KB5015684 12/24/2022 12:00:00 AM
+KB5021233 12/24/2022 12:00:00 AM
