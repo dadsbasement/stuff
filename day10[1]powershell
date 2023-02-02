@@ -201,3 +201,110 @@ KB5020872 12/24/2022 12:00:00 AM
 KB5012170 12/24/2022 12:00:00 AM
 KB5015684 12/24/2022 12:00:00 AM
 KB5021233 12/24/2022 12:00:00 AM
+
+
+$host.version | Get-Member
+   TypeName: System.Version
+
+Name          MemberType Definition                                                                                                                                      
+----          ---------- ----------                                                                                                                                      
+Clone         Method     System.Object Clone(), System.Object ICloneable.Clone()                                                                                         
+CompareTo     Method     int CompareTo(System.Object version), int CompareTo(version value), int IComparable.CompareTo(System.Object obj), int IComparable[version].Co...
+Equals        Method     bool Equals(System.Object obj), bool Equals(version obj), bool IEquatable[version].Equals(version other)                                        
+GetHashCode   Method     int GetHashCode()                                                                                                                               
+GetType       Method     type GetType()                                                                                                                                  
+ToString      Method     string ToString(), string ToString(int fieldCount)                                                                                              
+Build         Property   int Build {get;}                                                                                                                                
+Major         Property   int Major {get;}                                                                                                                                
+MajorRevision Property   int16 MajorRevision {get;}                                                                                                                      
+Minor         Property   int Minor {get;}                                                                                                                                
+MinorRevision Property   int16 MinorRevision {get;}                                                                                                                      
+Revision      Property   int Revision {get;}                    
+
+
+$host.version | Get-Member or (Select-Object -Property to only show properties)
+
+
+   TypeName: System.Version
+
+Name          MemberType Definition                                                                                                                                      
+----          ---------- ----------                                                                                                                                      
+Clone         Method     System.Object Clone(), System.Object ICloneable.Clone()                                                                                         
+CompareTo     Method     int CompareTo(System.Object version), int CompareTo(version value), int IComparable.CompareTo(System.Object obj), int IComparable[version].Co...
+Equals        Method     bool Equals(System.Object obj), bool Equals(version obj), bool IEquatable[version].Equals(version other)                                        
+GetHashCode   Method     int GetHashCode()                                                                                                                               
+GetType       Method     type GetType()                                                                                                                                  
+ToString      Method     string ToString(), string ToString(int fieldCount)                                                                                              
+Build         Property   int Build {get;}                                                                                                                                
+Major         Property   int Major {get;}                                                                                                                                
+MajorRevision Property   int16 MajorRevision {get;}                                                                                                                      
+Minor         Property   int Minor {get;}                                                                                                                                
+MinorRevision Property   int16 MinorRevision {get;}                                                                                                                      
+Revision      Property   int Revision {get;}           
+
+$host.version | Select-Object -ExpandProperty Major
+5
+
+$ids = get-process | Select-Object ID | Add-Content | ForEach-Object {Add-Content -Path .\PIDS.txt -Value $_}
+$ids2 = get-process | Select-Object -ExpandProperty ID | ForEach-Object {Add-Content -Path .\PIDS2.txt -Value $_}
+$ids3 = (get-process).ID | ForEach-Object {Add-Content -Path .\PIDS3.txt -Value $_}
+
+$ids1 | ForEach-Object {Stop-Process $_}
+$ids2 | ForEach-Object {Stop-Process $_}
+$ids3 | ForEach-Object {Stop-Process $_}
+
+
+PS C:\windows\system32> get-process | Select-Object ID
+this does not work because it does puts the "id" in the file
+
+  id
+  --
+ 132
+ 460
+ 536
+5816
+9060
+ 332
+ 372
+5396
+ 844
+ 852
+5104
+4116
+4468
+
+PS C:\windows\system32> get-process | Select-Object -ExpandProperty ID
+this works because no id.
+132
+460
+536
+5816
+9060
+332
+372
+5396
+844
+852
+5104
+
+CMD | GET-member -membertype method
+
+
+PS C:\windows\system32> $mycar = New-Object object
+
+PS C:\windows\system32>  Add-Member -MemberType NoteProperty -Name Color -Value "RED" -InputObject $mycar
+PS C:\windows\system32> Add-Member -Me NoteProperty -Na Make -Va "Mercedes" -InputObject $mycar
+PS C:\windows\system32> Add-Member -InputObject $mycar NoteProperty Model "7"
+
+$mycar
+Color Make     Model          
+----- ----     ----- 
+RED   Mercedes 7    
+
+$mycar | Select-Object  -ExpandProperty Make
+Mercedes
+
+adding a method to object
+PS C:\windows\system32> $mycar | Add-Member ScriptMethod Fly {"it can fucking fly"}
+$mycar.fly()
+it can fucking fly
