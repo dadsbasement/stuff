@@ -150,4 +150,99 @@ PS C:\Users\student> $a[-1]
 7
 8
 9
-PS C:\Users\student> 
+---------------------------------------
+PS C:\Users\student> @('BOOOM') * 5
+BOOOM
+BOOOM
+BOOOM
+BOOOM
+BOOOM
+------------------------------------
+$array = @((Get-Random  -Maximum 10)..(Get-Random -Minimum 1 -Maximum 10))
+range 1-10
+--------------------------------
+$reverse = $array[(array.length-1)..0]
+
+--------------------------------
+$array = 1..10 | % {Get-Random -minimum 1 -Maximum 10}
+      10 items//for each item 
+4
+4
+5
+3
+6
+7
+8
+9
+.
+.
+.
+-----------------------------------------
+$mylist = @{First = "John"; Last ="Doe"; Mid="Ron"; Age = 35}
+
+PS C:\Users\student> $mylist
+
+Name (key)                     Value                                                                      
+----                           -----                                                                      
+Last                           Doe                                                                        
+First                          John                                                                       
+Age                            35                                                                         
+Mid                            Ron                                                                        
+
+PS C:\Users\student> $mylist.Keys
+Last
+First
+Age
+Mid
+
+PS C:\Users\student> $mylist.values
+Doe
+John
+35
+Ron
+
+--------------------------------------------------
+store arrays in hash table (dictionary)
+
+$list = @{element1 = 5; array1 = 1..5; array2 = 6,7,8}
+
+PS C:\Users\student> $list["element1"]
+5
+
+PS C:\Users\student> $list["array1"]
+1
+2
+3
+4
+5
+
+PS C:\Users\student> $list.array1[2]
+3
+
+$mylist.Date = Get-Date
+
+$mylist
+Name                           Value                                                                      
+----                           -----                                                                      
+element1                       5                                                                          
+array1                         {1, 2, 3, 4...}                                                            
+Date                           2/1/2023 3:26:03 PM                                                        
+array2                         {6, 7, 8}     
+
+$mylist.Date = "bruh"
+works
+
+$mylist.remove("Date")
+
+-------------------------------------
+PS C:\Users\student> $employee1 =@{First = "Mary"; Last = "Hopper"; ID = "001"; Job = "Software Dev"}
+
+PS C:\Users\student> $employee2 =@{First = "John"; Last = "Williams"; ID = "002"; Job = "Web Dev"}
+
+PS C:\Users\student> $employee1.Username = "MHopper001"
+
+PS C:\Users\student> $employee2.Username = "JWilliams002"
+
+PS C:\Users\student> $employee3 =@{First = "Alex"; Last = "Moran"; ID = "003"; Job = "Software Dev"}
+
+PS C:\Users\student> $Status= @{Mary = "Management"; John = "Intermediate"; Alex = "Entry level"
