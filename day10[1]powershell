@@ -1,0 +1,104 @@
+activity 5
+
+$employee1 = [ordered]@{"First" = mary; "Last"= Hopper}
+
+Get-service | format-table (creates a table, must be at end of list.)
+
+PS C:\Users\student> Get-Service | format-list -property *
+
+
+Name                : AarSvc_22622ea
+RequiredServices    : {}
+CanPauseAndContinue : False
+CanShutdown         : False
+CanStop             : False
+DisplayName         : Agent Activation Runtime_22622ea
+DependentServices   : {}
+MachineName         : .
+ServiceName         : AarSvc_22622ea
+ServicesDependedOn  : {}
+ServiceHandle       : 
+Status              : Stopped
+ServiceType         : 224
+StartType           : Manual
+Site                : 
+Container           : 
+
+get-member -inputobject get-service
+properties and methods of (get-service)
+
+write-host just writes to screen cannot be sorted.
+write-host apple
+write-host orange
+write-host banana
+apple
+orange
+banana
+
+write-output goes into the "pipeline" so it can be sorted.
+
+write-output apple
+write-output orange
+write-output banana
+apple
+banana
+orange
+
+-------------------------------------------------
+
+get-command -verb format
+
+Get-Service | Format-table name,status
+
+with a variable
+$myblock = { Get-Service | Format-Table Name, Status }
+
+& $myblock
+
+gets the output of get-service and puts the name and status categories in the table
+
+$a = 1
+$b = {1 + 1}
+
+does not work 
+$a += $b 
+
+works
+$a += &$b
+
+
+get-service | sort-object -property status -descending 
+
+get-properties | sort-object -property ID
+
+get-childitem | sort-object -property length -descending
+
+
+
+1,7,4,6,| sort-object
+1
+4
+6
+7
+"1","4","7", "10" | sort-object
+1
+10
+4
+7
+"1","4","7", "10" | sort-object -property { [Int]$_ }
+turns the next string into a integer for sorting
+
+1..10 | Sort-Object -Property { Get-Random }
+10
+3
+5
+6
+2
+4
+8
+7
+9
+
+ Get-Variable | Sort-Object -Property Name | Format-Table Name, Description -AutoSize -Wrap
+ 
+ 
