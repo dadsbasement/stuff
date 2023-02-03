@@ -90,3 +90,67 @@ function Install-Software {
 
         Write-Host " You installed software $version on $Computername, Yuh!"
 }
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+ACTIVITIES 11
+
+function triangle{
+        
+      [CmdletBinding()]
+      param(
+
+     [Parameter(Mandatory)]
+     [int]$a,
+
+     [Parameter(Mandatory)]
+     [int]$b
+
+     )
+     $aa = $a * $a
+     $bb = $b * $b
+     $c = $aa + $bb
+     $answer = [math]::Sqrt($c)
+     Write-Host " √$aa + √$bb = $answer "
+}
+
+``````````````````````````````````````````````````````
+
+function angles{
+        
+      [CmdletBinding()]
+      param(
+
+     [Parameter(Mandatory)]
+     [int]$f,
+
+     [Parameter(Mandatory)]
+     [int]$g
+     )
+     $anser2 = $f + $g
+     $bob = 180 - $anser2
+     Write-Host " missing angle from $f and $g = $bob"
+     }
+     
+     
+-------------------------------------------------
+function Life-Info {
+        [CmdletBinding()]
+        param(
+
+        [Parameter(Mandatory)]
+        [string]$firstname,
+
+        [Parameter(Mandatory)]
+        [string]$lastname,
+        
+        [Parameter(Mandatory)]
+        [int]$age,
+        
+        [Parameter(Mandatory)]
+        [int]$weight
+
+      )
+      $weight = $weight / 2.2
+
+     $hashyboi = [ordered]@{ firstname = "$firstname"; lastname = "$lastname"; age = "$age"; weight = "$weight"}
+     Write-Output $hashyboi 
