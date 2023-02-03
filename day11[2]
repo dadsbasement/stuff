@@ -1,3 +1,5 @@
+-u format for date
+
 functions
 
 function Install-Software { Write-Host 'I installed some software')
