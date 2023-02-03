@@ -65,8 +65,26 @@ Install-Software -version 3
 Install-Software : Cannot validate argument on parameter 'version'.
 The argument "3" does not belong to the set "1,2"
  
-```````````````````````````````````````````````````````````````````````
+``````````````````````````````````````````````````````````````````````
+
+
 $computers = @("SRV1", "SRV2","SRV3")
 foreach($pc in $computers) {
   install-software -Version 2 -ComputerName $pc
   }
+
+
+function Install-Software {
+        [CmdletBinding()]
+        param(
+
+        [Parameter(Mandatory)]
+        [ValidateSet('1','2')]
+        [string]$version,
+
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string]$computername
+      )
+
+        Write-Host " You installed software $version on $Computername, Yuh!"
+}
