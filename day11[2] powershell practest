@@ -92,9 +92,49 @@ $Sum = 0
   
   ----------------------------------------------------------------------
 
-7
+7 return Get-Command *-process
 <# Return only those commands whose noun is process #>
+--------------------------------------------------------------
 
-8
-9
-10
+
+8 function q8($adjective) {
+   
+   return "Powershell is $adjective"
+   
+   
+<# Return the string 'PowerShell is ' followed by the adjective given
+	   by the `$adjective argument
+	#> 
+}
+----------------------------------------------------------------------------------------------
+
+9  
+       if ($addr -as[IPAddress]){
+                return $true
+                }
+       else{
+       return $false
+       }
+
+
+<# Return `$true when the given argument is a valid IPv4 address,
+	   otherwise return `$false. For the purpose of this function, regard
+	   addresses where all octets are in the range 0-255 inclusive to
+	   be valid.
+	#>
+--------------------------------------------------------------------------------------
+
+10function q10 ($filepath,$lasthash) {
+
+
+$hash = get-filehash -Algorithm SHA256 $filepath
+return $has.Hash -ne $lasthash
+
+
+<# Return `$true if the contents of the file given in the
+       `$filepath argument have changed since `$lasthash was
+       computed. `$lasthash is the previously computed SHA256
+       hash (as a string) of the contents of the file. #>
+       
+       
+       }
