@@ -308,3 +308,265 @@ adding a method to object
 PS C:\windows\system32> $mycar | Add-Member ScriptMethod Fly {"it can fucking fly"}
 $mycar.fly()
 it can fucking fly
+
+
+
+$name = Get-WmiObject Win32_ComputerSystem | Select-Object -ExpandProperty Name
+$os = Get-WmiObject  Win32_OperatingSystem | Select-Object -ExpandProperty Version
+#$windows = Get-WmiObject  Win32_OperatingSystem | Select-Object -ExpandProperty Caption
+$Manufacturer = Get-WmiObject  Win32_Bios | Select-Object -ExpandProperty Manufacturer
+$disks = Get-WmiObject Win32_LogicalDisk
+
+$Computerinfo2 = New-Object object
+Add-Member -MemberType NoteProperty -Name Name -Value $name -InputObject $Computerinfo2
+Add-Member -MemberType NoteProperty -Name Version -Value $os -InputObject $Computerinfo2
+#Add-Member -MemberType NoteProperty -Name Operating system -Value $windows -InputObject $Computerinfo2
+Add-Member -MemberType NoteProperty -Name Manufacturer -Value $Manufacturer -InputObject $Computerinfo2
+Add-Member -MemberType NoteProperty -Name Disks -Value $disks -InputObject $Computerinfo2
+
+$Computerinfo2
+Name    Version    Manufacturer Disks                                               
+----    -------    ------------ -----                                               
+WIN-OPS 10.0.19045 SeaBIOS      \\WIN-OPS\root\cimv2:Win32_LogicalDisk.DeviceID="C:"
+
+-----------------------------------------------------------------------------------------------
+
+
+2 -eq 2 
+2 -eq 3 False
+"abc" -eq "abc", "def 
+FALSE
+"abc", "def" -eq "abc" 
+abc
+"abc" -eq "abc" 
+True
+
+
+"abc" -ne "abc" 
+False
+
+"abc","def" -ne "abc"
+def
+
+"abc" -ne "abc","def"
+True
+
+8 -gt 6
+True
+7,8,9 -gt 8
+9
+
+5,6,7 -ge 6
+6
+7
+
+6 -ge 6
+True
+
+
+inky -like *
+True
+Blinky -like Bl?nky
+True
+Pinky -like [L-Q]inky
+True
+Clyde -like [ABC]lyde
+
+
+match (uses regex)
+$text = "your account username is AAA4495"
+$pattern = '([A-F]{3})(\d{4})'
+$text -match $pattern
+TRUE
+
+$ghosts = "Inky", "Blinky","Jinky" 
+$ghosts -contains 'jinky'
+True
+'jinky' in $ghosts
+True
+
+
+-------------------------------------------
+if statement
+if (condition){
+    #code
+}
+Elseif (condition){
+    #code
+}
+Else{
+    code
+}
+
+switch ($expression){
+    $value{code block}
+    $value{code block}
+    default {code block}
+}
+
+$num = 4
+
+switch ($num){
+    {$_ -le 4}{"4 or less"}
+    ${$_ -ge 5}{ 5 o mo}
+    default {code block}
+}
+
+"4 or less"
+-----------------------------------------------
+$model = '[A-Za-z]{2}\d{2,5}'
+$line1 = "Do you have model number: MT5437 for john.doe@sharklasers.com?"
+$line2 = "What model number for john.doe@sharklasers.com?"
+
+$v= if ($line1 -match $model){
+        "MODEL NUMBER FOUND"
+    }
+    Else{
+        "NO MORE MODEL NUMBER"
+    }
+
+$a= if ($line2 -match $model){
+        "MODEL NUMBER FOUND"
+    }
+    Else{
+        "NO MORE MODEL NUMBER"
+    }
+    
+    
+    
+ `````````````````````````````````````````````
+ switch($pattern){
+  {line1 -match $_}{
+     $line1 -match $pattern| out-null
+   $model = $matches[0]
+   "yes the model is $model"}
+   {line2 -match $_ }{| out-null
+    $model = $matches[0]
+   {line1 -notmatch $_} {
+   
+   -------------------------------------------
+   while loop
+   
+  while(condition){
+    code
+  }
+  do{
+   code block
+ }while(condition)
+
+
+$num = 4 
+while($num -lt 3){
+    $num
+    $num++
+}
+
+do{
+    $num
+    $num++
+ }while($num -lt 3)
+ 
+ $num = 5 because the num++ is execute before the comparison occurrs.
+ 
+ do {
+    code
+ }until(condition)
+ 
+ 
+ for($i=0; $i -le 255; i++){
+   write-host 192.168.0.255
+   }
+ 
+ foreach(var in expression){
+   do code
+   }
+ 
+ foreach($file in (gci -path $pwd)){
+    $file.name
+    }
+    
+    get-childitem -path $pwd | foreach-object {$_.name}
+    
+    getchilditem = ls -al
+    
+    ----------------------------------------------------------
+    flow control
+    
+    while($num -lt 10){
+      $num += 1
+      if($num -eq 5){
+         break
+         }
+       $num
+      }
+       
+     1
+     2
+     3
+     4
+
+
+while($num -lt 10){
+      $num += 1
+      if($num -eq 5){
+         continue
+         }
+       $num
+      }
+       
+     1
+     2
+     3
+     4
+     6
+     7
+     8
+     9
+     10
+     
+     
+     ---------------------------------------------------
+     set-content -path .\example.txt -value "string"
+     get-content .\example.text
+     
+     set-content -path .\example -value "another string"
+     get-content .\example.text
+     ------------------------------------------------
+     activity 9
+     
+     $procs = "notepad", "microsoftedge", "mspaint"
+     
+     $procs | foreach-object {Start-Process $_}
+     
+     Get-Process
+     
+     $procs | ForEach-Object {if($_ -eq "microsoftedge"){(Get-Process -Name "msedge".Kill()}(Get-Process -Name $_).Kill()}
+     msedge is the name of microsoft edge running so we have to specify
+     
+     
+     Part 2 
+     
+     $procs = "notepad", "microsoftedge", "mspaint"
+     
+     $procs | foreach-object {start-process $_}
+     
+     $file = "$pwd\procs.txt"
+     
+     foreach($proc in $procs) {
+      get-proceess | where-object{( $_.Name -like $proc) -or ($_.Name -like "msedge")} | 
+      ForEach-Object{Add-Content -Path $file -Value $_Id.} }
+      
+    sleep 3
+    
+    Get-Content .\procs.txt | Foreach-object{Stop-process $_}
+    
+    
+    Part 3
+    
+    
+    $procs = "notepad", "microsoftedge", "mspaint"
+    
+    $procs | foreach-object {start-process $_}
+    
+    get-proceess | where-object{( $_.Name -like $proc) -or ($_.Name -like "msedge")} | 
+     Format-Table -Propert id, name, starttime, totalprocessortime, VirtuallMemorySize, WorkingSet64}
