@@ -140,10 +140,10 @@ function Life-Info {
         [Parameter(Mandatory)]
         [string]$firstname,
 
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory)##postion=1]
         [string]$lastname,
         
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory)##position=2]
         [int]$age,
         
         [Parameter(Mandatory)]
@@ -153,4 +153,74 @@ function Life-Info {
       $weight = $weight / 2.2
 
      $hashyboi = [ordered]@{ firstname = "$firstname"; lastname = "$lastname"; age = "$age"; weight = "$weight"}
+   
      Write-Output $hashyboi 
+     # OR 
+     #return $hashyboi
+     
+     `````````````````````````````````````
+     Function Get-OrdinalDate {
+        $date = (get-date).dayofyear
+        $year = (get-date).year
+        write-host $year"-"$date
+        }
+---------------------------------------------------
+
+Function Get-Parameter([int]$val1, $val2, $val3){
+        return $val1 * $val2 *$val3
+    }
+
+    Get-Parameter 3 3 3
+    
+  
+    
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    advanced functions
+  
+  
+  function Install-Software {
+        [CmdletBinding()]
+        param(
+
+        [Parameter(Mandatory)]
+        [ValidateSet('1','2')]
+        [string]$version,
+
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string]$computername
+      )
+      process{
+        Write-Host " You installed software $version on $Computername, Yuh!"
+        }
+}
+
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+ 
+ activity last
+ 
+ function get-multisum {
+        [CmdletBinding()]
+        param(
+
+        [Parameter(Mandatory)]
+        [array]$listy,
+
+        [Parameter(Mandatory)]
+        [int]$singlenumber
+      )
+      Begin {
+              $sum=0
+               }
+      process{
+        foreach($num in $array) {
+                if($num -eq $singlenumber){
+                continue
+                }
+                  $sum += $num
+            }
+       }
+     }  
+       End {
+                $sum
+                }
