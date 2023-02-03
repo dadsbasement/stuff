@@ -91,7 +91,7 @@ function Install-Software {
         Write-Host " You installed software $version on $Computername, Yuh!"
 }
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ACTIVITIES 11
 
 function triangle{
@@ -174,7 +174,7 @@ Function Get-Parameter([int]$val1, $val2, $val3){
     
   
     
- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     advanced functions
   
   
@@ -195,7 +195,7 @@ Function Get-Parameter([int]$val1, $val2, $val3){
 }
 
  
- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  
  activity last
  
@@ -224,3 +224,62 @@ Function Get-Parameter([int]$val1, $val2, $val3){
        End {
                 $sum
                 }
+                
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                regex
+                
+     He"{0} Gigabytes per terabyte "-f (1TB /1 GB)
+     "{0:N0}" -f 1000000
+                
+    replace
+    Hello John -replace "John", "World"
+    
+    
+    'server1,server2,server3' -replace '[,]', ';'
+     replace comma to semi colon            
+
+(ipconfig) -match 'IPv6'
+
+-$var -join('-')
+
+-split '(?<=\G.{2})(?=.)'
+pairs of two 
+
+format to mac address 
+-split '(?<=\G[0-9a-f]{2}(?=.)' -join ':'
+
+split hex values
+-split '(?<=\G[0-9a-f]{2}(?=.)'
+
+convert hex to decimal 
+$XXXXXXXXXXXXXXXXXXXXXxxxx
+
+
+
+
+how to remove whitespace.
+
+'[    jOHN BON     DOE]' -replace '\s+', ' '
+
+(qprocess) -replace '\s{2,}', ', ' | select -First 10
+
+
+replace text 
+'192.168.0.1' replace '\d{1,3}$', '255'
+
+
+PS C:\Users\student>  
+   $list = 'comp1', 'comp10', 'comp13'
+$pattern = 'comp(\d{1,3})'
+$list -replace $pattern, 'Computer$1'
+
+Computer1 |changed from comp1
+Computer10 | changed from comp10
+Computer13 | changed from comp13
+
+"256.0.0.0" -as [IPAddress]
+if ("8.8.8.8" -as [IPAddress]){"8.8.8.8 is an IP"}
+8.8.8.8 is an IP
+
+if ("888.8.8.8" -as [IPAddress]){"8.8.8.8 is an IP"}else{"itsnot"}
+itsnot
