@@ -1,3 +1,5 @@
+$input acts as pipeline inputs
+
 1 function q1($var1,$var2,$var3,$var4) {
     $product=$var1*$var2*$var3*$var4 
     return $product
