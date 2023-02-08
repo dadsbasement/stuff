@@ -1,1 +1,39 @@
+day 1
 ----------
+$PsHome         # Stores the installation directory for PowerShell
+$Home           # Stores the current user’s home directory
+
+$profile | Get-Member -Type NoteProperty                        # Displays the profile values of Names, MemberType, and Paths.
+$Profile | get-member -type noteproperty | ft -wrap             # Displays the same results but completed in case it was cut off '...'
+$PROFILE | Get-Member -MemberType noteproperty | select name    # Narrowed results to display only Names
+
+
+
+ To determines whether individual profiles have been created on the local computer:
+
+Test-Path -Path $profile.currentUsercurrentHost
+Test-Path -Path $profile.currentUserAllHosts
+Test-Path -Path $profile.AllUsersAllHosts
+Test-Path -Path $profile.AllUserscurrentHost
+
+
+
+    By default, PowerShell Aliases are not saved if you close a PowerShell window session.
+
+        For example, if you create a few Aliases and close the PowerShell window, you will be required to recreate the same PowerShell aliases.
+
+            This would obviously present a problem if you have Aliases set up for use in PowerShell scripts.
+
+New-Alias -Name DemUsers -Value Get-LocalUser
+
+
+start-transcript
+start-transcript | out-null                       # Pipe to out-null so users don't see that commands are being recorded
+
+Get-PSSessionConfiguration                        # Displays permissions
+
+winrm get winrm/config          # Displays the WinRM configuration 
+
+======================================================================================================================================================
+
+DAY 2
