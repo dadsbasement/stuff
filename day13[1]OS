@@ -107,12 +107,144 @@ HKEY_USERS contains some of the following information:
 
     S-1-5-21-domain-500 Refers to the built in local administrator account.
     
+    ===============================================================
+    
+
+
+reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v testme /t REG_SZ /d C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+    The /v stands for Value; In this case the name of this Key Value.
+
+    The /t stands for Type; Types can be any of the Data Types that we went over earlier.
+
+    The /d stands for Data; Is what is the actual Data or in this case a command to open a file every time the system is ran.
     
     
+    --------------------------------------------------------------
+    
+
+Get-PSDrive
+
+    To create a new Windows PowerShell drive, you must supply three parameters:
+
+    A Name for the drive (you can use any valid Windows PowerShell name)
+
+    The PSProvider (use "FileSystem" for file system locations, "Registry" for registry locations, and it could also be a shared folder on a remote server.)
+
+    The Root, that is, the path to the root of the new drive.
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
 
+Minimum commands to know
+
+    Query
+
+        Get-ChildItem cmdlet gets the items in one or more specified locations.
+
+        Get-ItemProperty cmdlet gets the items in one or more specified locations.
+
+        Get-Item cmdlet gets the item at the specified location. It doesn’t get the contents of the item at the location unless you use a wildcard character (*) to request all the contents of the item.
+
+    Modify
+
+        Set-ItemProperty cmdlet changes the value of the property of the specified item. example, changing setting to :true or :false.
+
+        Remove-ItemProperty cmdlet to delete registry values and the data that they store.
+
+    Create
+
+        New-Item cmdlet creates a new item and sets its value. In the registry, New-Item creates registry keys and entries.
+
+        New-Itemproperty cmdlet creates a new property for a specified item and sets its value. Typically, this cmdlet is used to create new registry values, because registry values are properties of a registry key item.
 
 
+`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+New-ItemProperty - Creates a new value associated with a sub key
 
+New-ItemProperty "HKLM:\Software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -Name "%USERPROFILE%Downloads/test-document.doc" -PropertyType Binary -Value ([byte[]](0x30,0x31,0xFF)) 
+
+New-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name Test -PropertyType String -Value C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe 
  
 
+``````````````````````````````````````````````````````````````````````````````````
+
+get-psdrive is like filesystem only in POWRSHEL
+    
+    
+    Create Temporary or Permanent connections to navigate the registry
+
+        New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
+
+Using the Registry
+
+    Outcome: The "Using the Registry" section covers the practical uses of the Windows Registry for both offensive and defensive purposes. Cover that any changes are only used if the process reads the new value from the registry. Cover the registries most commonly used for persistence. Cover the registries most commonly used for forensics.
+
+Registry Changes
+
+----------------------------------------------------------------------
+locations for persistence
+
+HKLM\Software\Microsoft\Windows\Run
+
+HKU\<SID>\Software\Microsoft\Windows\Run
+
+HKLM\SYSTEM\CurrentControlSet\services
+
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+
+`````````````````````````````````````````````````````````````````````````````
+
+C:\Users\andy.dwyer>echo "Coffe is life" > cafe.txt
+
+C:\Users\andy.dwyer>echo social security numbers xxx-xx-xxxx > cafe.txt:socials.info
+
+C:\Users\andy.dwyer>more < cafe.txt:socials.info
+social security numbers xxx-xx-xxxx
+
+C:\Users\andy.dwyer> cafe.txt
+Coffee Is Life
+
+C:\Users\andy.dwyer>dir /R cafe.txt
+ Volume in drive C is OS
+ Volume Serial Number is A214-0667
+
+ Directory of C:\Users\andy.dwyer
+
+02/08/2023  03:30 PM                18 cafe.txt
+                                    38 cafe.txt:socials.info:$DATA
+               1 File(s)             18 bytes
+               0 Dir(s)  19,648,626,688 bytes free
+
+`````````````````````````````````````````````````````````````````````````
+
+POWERSHELL ADS
+PS C:\windows\system32>Set-Content .\reminder.txt -Value "social security numbers" -Stream secret.info 
+
+PS C:\windows\system32>Get-Item reminder.txt -Stream * 
+PSPath        : Microsoft.PowerShell.Core\FileSystem::C:\windows\system32\reminder.txt::$DATA
+PSParentPath : Microsoft.PowerShell.Core\FileSystem::C:\windows\system32
+PSChildName : reminder.txt::$DATA
+PSDrive       : C
+PSProvider    : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer : False
+FileName      : C:\windows\system32\reminder.txt 
+Stream        : :$DATA 
+Length        : 44
+
+PSPath        : Microsoft.PowerShell.Core\FileSystem::C:\windows\system32\reminder.txt:secret.info
+PSParentPath  : Microsoft.PowerShell.Core\FileSystem::C:\windows\system32
+PSChildName  : reminder.txt:secret.info
+PSDrive       : C
+PSProvider    : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer : False
+FileName      : C:\windows\system32\reminder.txt
+Stream        : secret.info 
+Length        : 25
+
+PS C:\windows\system32>Get-Content reminder.txt -Stream secret.info 
+social security numbers
+
+
+`````````````
