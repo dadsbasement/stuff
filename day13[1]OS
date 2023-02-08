@@ -42,3 +42,77 @@ winrm get winrm/config          # Displays the WinRM configuration
 ======================================================================================================================================================
 
 DAY 2
+
+
+
+The registry is comprised of Keys, Subkeys and Values structured in a tree format.
+
+    Keys - are known as Registry Hives and can contain subkeys and values.
+
+    Subkeys - can contain subkeys and values
+
+    Values - contain data in specific formats.
+
+
+5 HIVES
+
+    HKEY_LOCAL_MACHINE
+
+    HKEY_USERS
+
+    HKEY_CURRENT_USERS
+
+    HKEY_CURRENT_CONFIG
+
+    HKEY_CLASSES_ROOT
+    
+    
+    
+    
+    KEY_LOCAL_MACHINE (HKLM)
+
+Contains configuration information for the entire computer. Its values are read every time the machine is started regardless of the user who logs in. Its subkeys are :
+
+    HARDWARE - contains a database of installed devices along with their drivers
+
+    SAM - Security Account Manager stores user and group accounts along with NTLM hashes of passwords
+
+    Security - Local Security policy accessed by lsass.exe used to determine rights and permissions for users on the machine
+
+    System - Contains keys pertaining to system startup such as programs started on boot or driver load order.
+
+
+
+HKEY_USERS (HKU)
+
+Contains all all user profiles on the system. Contains one key per user on the system. Each key is named after the SID(Security Identifier) of the user.
+	SID values are unique to each user on the machine.
+
+HKEY_USERS contains some of the following information:
+
+    User Environment settings for the desktop
+
+    Shortcuts
+
+    File associations
+    
+    
+    
+
+    S-1-5-18 refers to LocalSystem account.
+
+    S-1-5-19 refers to LocalService account. It is used to run local services that do not require LocalSystem account.
+
+    S-1-5-20 refers to NetworkService account. It is used to run network services that do not require LocalSystem account.
+
+    S-1-5-21-domain-500 Refers to the built in local administrator account.
+    
+    
+    
+
+
+
+
+
+ 
+
