@@ -1,0 +1,69 @@
+vim .ssh/config
+Host linops
+  HostName 10.50.22.82
+  User student
+  Port 22
+
+
+ssh linops
+bad owner permissions
+ls -l .ssh/config
+-rw-rw----
+chmod 600 .ssh/config
+ssh linops
+CRTL C
+ssh-keygen -t ed25519
+enter
+password
+password
+ssh-copy-id linops
+vim .bash_aliases
+------------------------------------------------------------------
+
+Host enumeration
+ 
+who- Whoami,id 
+where- hostname, uname -a
+what am i allowed to do- sudo -l
+whats going on- ps -elf/top, netstat/ss, ipconfig/ip addr,arp/ip neigh, route/ip route,who , w
+
+netstat -nup udp
+netstat -ntlp tcp 
+
+sudo ss -ntlp | head -n10
+
+
+what is that?
+
+whys that happening?
+
+hows that happening?
+
+whats inside?
+
+----
+command -help
+
+whereis ss
+shows ss file config and location of man help pages.
+-----------------------------------------------------------------------------------------------------_
+linux file heirarchy 
+
+/  - root
+/bin
+/boot - for things related to boot and kernel.
+/dev - device files
+/etc - everything thats configurable
+/lib - contains those shared library images needed to boot the system and run the commands in the root filesystem,
+/home 
+/media - temporarily attached storage
+/mount - permanantly attached storage
+/opt - user installed programs
+/proc directory of procsses running on sys
+/root - root $home
+/run - dir of 
+/sbin - sysbinaries (root access)
+/srv - services
+/tmp - temporary (everyone access)
+/usr - universal sys resources
+/var - variable data. changing files etc. logs 
