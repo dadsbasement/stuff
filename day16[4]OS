@@ -84,3 +84,86 @@ MBRcopy: DOS/MBR boot sector
   
  `````````````````````````````````````````````````````````````````````````````````````````````````````````````````
         
+Looking at Grub configuration in Linux to find the Kernel
+cat /boot/grub/grub.cfg 
+
+Kernel 
+Hard Coded
+Executes /sbin/init or systemd daemon, the very first process started by the kernel with a process ID (PID) of 1
+--------------------------------------------------------------------------------------------------
+important directories and files
+	/etc/inittab
+	/etc/init.d/
+	/etc/rc#.d
+	/sbin/init.
+	
+
+
+The program /etc/init is the first process to start in SysV Linux machines. The kernel spawns /sbin/init. Its role is to initialize the system to a target run level specified in /etc/inittab.
+
+The file /etc/inittab is a text file that contains Run Level entries as variables read by /etc/init. Entries numbered 0-6 specify a directory with scripts to start at the specified Run Level. By default the system will try to start the initdefault run level. If that fails to start, the machine will display an error, then execute the scripts in the 0(halt) run level.
+
+
+
+The first letter K or S means Kill or Start the process that that script handles
+
+The two digit number that follows K or S dictates the order the scripts executes
+
+
+ls -l /etc/rc3.d/ 
+
+lrwxrwxrwx 1 root root 15 Jan 31  2020 S01acpid -> ../init.d/acpid 
+lrwxrwxrwx 1 root root 17 Feb  4  2020 S01anacron -> ../init.d/anacron
+lrwxrwxrwx 1 root root 16 Jan 31  2020 S01apport -> ../init.d/apport
+lrwxrwxrwx 1 root root 13 Jan 31  2020 S01atd -> ../init.d/atd
+lrwxrwxrwx 1 root root 26 Jan 31  2020 S01console-setup.sh -> ../init.d/console-setup.sh
+lrwxrwxrwx 1 root root 14 Jan 31  2020 S01cron -> ../init.d/cron
+lrwxrwxrwx 1 root root 14 Jan 31  2020 S01dbus -> ../init.d/dbus
+lrwxrwxrwx 1 root root 14 Feb  4  2020 S01gdm3 -> ../init.d/gdm3
+
+ls -l /etc/rc1.d/ 
+
+lrwxrwxrwx 1 root root 20 Feb  4  2020 K01alsa-utils -> ../init.d/alsa-utils
+lrwxrwxrwx 1 root root 13 Jan 31  2020 K01atd -> ../init.d/atd
+lrwxrwxrwx 1 root root 20 Jan 31  2020 K01cryptdisks -> ../init.d/cryptdisks
+lrwxrwxrwx 1 root root 26 Jan 31  2020 K01cryptdisks-early -> ../init.d/cryptdisks-early
+lrwxrwxrwx 1 root root 18 Jan 31  2020 K01ebtables -> ../init.d/ebtables
+lrwxrwxrwx 1 root root 14 Feb  4  2020 K01gdm3 -> ../init.d/gdm3 
+
+-> equals symbolic link to.
+
+-------------------------------------------------------------------------------
+systemd
+
+Instead of runlevels, uses 'targets' that point to other dependencies based on the features of the environment desired
+
+    ‘default.target’ is essentially the default runlevel (equivalent to id:5:initdefault in /etc/inittab). Use ‘systemctl get-default’ to find it, and ‘systemctl set-default’ to change it.
+
+‘systemctl list-dependencies’ shows all the services running under default.target
+
+Uses 'systemctl’ to manage system (backwards compatible)
+
+    ‘systemctl status <application>.service’
+
+    ‘systemctl list-units’
+
+Config: /etc/systemd/ and /etc/systemd/system
+
+--------------------------------------------------------------------------------
+systemctl cat fstrim.timer -- !!!!!!
+----------------------------------------------------------------------------------
+all sys files for sys v initd should be in etc/init.d
+
+
+check to see system type
+ls -l /sbin/init
+`````````````````````````````````````````````````````````````````````````````````````
+
+/etc/profile is a script that executes whenever a user logs into an interactive shell on Linux. its functionality 
+depends entirely on the version of Linux being used. Ubuntu Linux uses it to set the BASH shell prompt by executing 
+/etc/bash.bashrc and execute any script named *.sh in /etc/profile.d.
+
+Unlike /etc/environment it executes every time a user logs in interactively; 
+therefore, when the file is modified logging out then in again will apply the changes.
+
+check /etc/profile for persistance
