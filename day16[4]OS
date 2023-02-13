@@ -1,0 +1,86 @@
+bios / basic IO system
+Mbr / master boot record 
+grub / grand unified bootloader
+   
+   
+   The machine’s BIOS or boot firmware loads and runs a boot loader.
+
+    The boot loader(“Grub” located in MBR) finds the kernel image on disk, loads it into memory, and starts it.
+
+    The kernel initializes the devices and its drivers.
+
+    The kernel mounts the root filesystem.
+
+    The kernel starts a program called init with a process ID of 1. This point is the user space start.
+
+    Init sets the rest of the system processes in motion via pre-configured runlevels.
+    
+    ========================
+    MBR
+   
+   First 512 bytes of the HD
+
+    Hard disks utilizing a MBR can have a maximum of 4 primary partitions and a max size of 2 TB each.
+
+        Typically the MBR is located on /dev/hda or /dev/sda (/dev/vda)
+
+        It contains information about GRUB (or LILO or other Boot Loader system)
+
+    Other related commands:
+
+        du - disk usage: summarize disk usage of the set of FILEs
+
+        df - disk free : displays the amount of disk space available on the file system
+
+        lsblk - lists information about all available - or specified - block devices
+        
+        ---------------------------------------------------------------------------------------------
+        sudo xxd -l 512 -g 1 /dev/vda
+        
+        usually ends in 55 aa
+        ----------------------------------------------------------------------
+        dd command allows copy byte for byte 
+        
+        
+        --------------------------------------------------
+Examining the contents of the MBR with xxd
+
+student@linux-opstation-kspt:~$ sudo xxd -l 512 -g 1 /dev/vda 
+
+00000000: eb 63 90 00 00 00 00 00 00 00 00 00 00 00 00 00  .c.............. 
+00000010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+_truncated_
+000001b0: cd 10 ac 3c 00 75 f4 c3 fa b7 12 e6 00 00 80 00  ...<.u.......... 
+000001c0: 21 02 83 0f 2e 40 00 08 00 00 df f7 ff 0f 00 00  !....@.......... 
+000001d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+000001e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+000001f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 55 aa  ..............U.
+
+	Execute xxd to hexdump 512 bytes in separated by 1 byte from /dev/vda to the screen
+	The start of the hard drive shown by the code eb 63. File signature for an MBR.
+	The first partition of the hard drive in 0x01be shown as 80
+	The second partition entry is blank!
+  
+  `````````````````````````````````````````````````````````````````````````````````
+  
+Making a copy of the MBR with dd — Run this on Ops Station
+
+student@linux-opstation-kspt:~$ dd if=/dev/vda of=MBRcopy bs=512 count=1 
+dd: failed to open '/dev/vda': Permission denied 
+
+student@linux-opstation-kspt:~$ sudo !! 
+1+0 records in
+1+0 records out
+512 bytes copied, 0.00026952 s, 1.9 MB/s
+
+student@linux-opstation-kspt:~$ file MBRcopy 
+MBRcopy: DOS/MBR boot sector
+
+	Execute dd which copies 512 bytes once from /dev/vda to a file in my current directory called MBR
+	Notice, dd failed to run
+	!! represents the previous command. Run it with sudo permissions.
+	Execute file to read the file signature from the MBR file
+	Linux knows this is a MBR because of the file signature in the first 2 bytes of the file. Its always in hex address 0x00 and 0x01 
+  
+ `````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+        
