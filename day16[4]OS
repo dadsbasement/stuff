@@ -58,14 +58,14 @@ _truncated_
 
 	Execute xxd to hexdump 512 bytes in separated by 1 byte from /dev/vda to the screen
 	The start of the hard drive shown by the code eb 63. File signature for an MBR.
-	The first partition of the hard drive in 0x01be shown as 80
+	The
 	The second partition entry is blank!
   
   `````````````````````````````````````````````````````````````````````````````````
   
 Making a copy of the MBR with dd — Run this on Ops Station
 
-student@linux-opstation-kspt:~$ dd if=/dev/vda of=MBRcopy bs=512 count=1 
+student@linux-opstation-kspt:~$ dd if=/dev/vda of=MBRcopy bs=1 count=512
 dd: failed to open '/dev/vda': Permission denied 
 
 student@linux-opstation-kspt:~$ sudo !! 
@@ -177,3 +177,73 @@ therefore, when the file is modified logging out then in again will apply the ch
 
 check /etc/profile for persistance
 ---------------------------------------------------------
+
+system d target and unit
+
+Showing the default target unit
+
+student@linux-opstation-kspt:/$ ls -lisa /lib/systemd/system/default.target
+
+lrwxrwxrwx 1 root root 16 May  3 11:30 default.target -> graphical.target 
+
+	Symbolically linked default.target to graphical.target unit.
+	The system will, by default, try to run the system to the specifics set by graphical.target.
+
+​
+6.2.2 Target units
+
+Systemd target units are a set of value=data pairs to create processes in a set order on the system. But, they are simple to understand at a functional level by understanding the value=data fields within each.
+Examining the Contents of the graphical.target
+
+cat /lib/systemd/system/default.target | tail -n 8
+
+Description=Graphical Interface
+Documentation=man:systemd.special(7)
+Requires=multi-user.target
+Wants=display-manager.service 
+Conflicts=rescue.service rescue.target
+After=multi-user.target rescue.service rescue.target display-manager.service 
+AllowIsolate=yes
+
+	wants=display-manager.service attempts to start other units. If they fail to start, the calling target unit will still execute.
+	requires=multi-server.target attempts to start other units. If they fail to start, the calling target unit will fail to execute.
+
+​
+
+Yet, wants and requires statements can also come from other locations on the file system. Target units search for dependencies in eleven other locations around the file system.
+Target.unit want and requires dependencies search locations
+
+    /etc/systemd/system/*
+
+    /lib/systemd/system/*
+
+    /run/systemd/generator/*
+
+    More found in System Unit Man Page
+
+Showing more wants and requires to graphical.target — Run on Ops Station
+
+student@linux-opstation-kspt:/$ ls -l /etc/systemd/system/ | grep graphical
+drwxr-xr-x 2 root root 4096 Feb  4  2020 graphical.target.wants 
+
+student@linux-opstation-kspt:/$ ls -l /etc/systemd/system/graphical.target.wants/
+total 0
+lrwxrwxrwx 1 root root 43 Jan 31  2020 accounts-daemon.service -> /lib/systemd/system/accounts-daemon.service  
+lrwxrwxrwx 1 root root 35 Feb  4  2020 udisks2.service -> /lib/systemd/system/udisks2.service 
+
+student@linux-opstation-kspt:/$ ls -l /lib/systemd/system | grep graphical
+lrwxrwxrwx 1 root root   16 Nov 15  2019 default.target -> graphical.target
+-rw-r--r-- 1 root root  598 Jan 28  2018 graphical.target
+drwxr-xr-x 2 root root 4096 Jan 31  2020 graphical.target.wants 
+lrwxrwxrwx 1 root root   16 Nov 15  2019 runlevel5.target -> graphical.target
+
+student@linux-opstation-kspt:/$ ls -l /lib/systemd/systemgraphical.target.wants/
+total 0
+lrwxrwxrwx 1 root root 39 Nov 15  2019 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service 
+
+	A graphical.target wants directory in /etc/systemd/system/
+	graphical.target also target wants udisks2.service and accounts-daemon.service
+	Yet another graphical.target wants directory in /lib/systemd/system/
+	graphical.target also wants systemd-update-utmp-runlevel.service
+
+​
