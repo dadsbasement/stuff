@@ -149,6 +149,15 @@ Uses 'systemctl’ to manage system (backwards compatible)
 
 Config: /etc/systemd/ and /etc/systemd/system
 
+
+Target.unit want and requires dependencies search locations
+
+    /etc/systemd/system/*
+
+    /lib/systemd/system/*
+
+    /run/systemd/generator/*
+
 --------------------------------------------------------------------------------
 systemctl cat fstrim.timer -- !!!!!!
 ----------------------------------------------------------------------------------
@@ -167,3 +176,4 @@ Unlike /etc/environment it executes every time a user logs in interactively;
 therefore, when the file is modified logging out then in again will apply the changes.
 
 check /etc/profile for persistance
+---------------------------------------------------------
