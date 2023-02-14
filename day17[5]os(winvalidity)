@@ -1,0 +1,372 @@
+
+
+
+    Q: Which Windows commands let us view processes?
+
+        PowerShell: Get-Process - Microsoft Reference
+
+        CMD: tasklist
+
+
+2.2.1 View Processes In PowerShell
+
+
+    View all Processes, not sorted.
+
+        Get-Process
+
+PS C:\Users\student> Get-Process
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+    278      18     9420      18984       3.61   6304   1 ApplicationFrameHost
+    342      19     4516       3988              4624   0 armsvc
+    958      57   127900     202620      51.38    632   1 atom
+    572      82   182356     266836     117.64   3148   1 atom
+    321      33    92760     164644       0.56   7864   1 atom
+    222      15     6884      28916       0.03   8024   1 atom
+    733      27   143268     172480      38.33  13980   1 atom
+     68       5     2040       4128       0.02   7504   1 cmd
+
+
+    View all Processes, sort them by PID.
+
+        Get-Process | Sort -Property Id | more
+
+PS C:\Users\student> Get-Process | Sort -Property Id | more
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+      0       0       60          8                 0   0 Idle
+   4240       0      192         96                 4   0 System
+      0       0      184      22332                72   0 Secure System
+      0      17     6552      28656               132   0 Registry
+    168      11     1432       3484               452   0 wininit
+     53       3     1056        940               504   0 smss
+
+-- More --
+
+
+    View all processes, but sort by PID and only show the properties I define.
+
+        Get-Process | Select Name, Id, Description | Sort -Property Id | more
+
+PS C:\Users\student> Get-Process | Select Name, Id, Description | Sort -Property Id | more
+
+Name                       Id Description
+----                       -- -----------
+Idle                        0
+System                      4
+Secure System              72
+Registry                  132
+wininit                   452
+smss                      504
+LsaIso                    572
+csrss                     576
+svchost                   624
+atom                      632 Atom
+svchost                   852
+rundll32                 1616 Windows host process (Rundll32)
+CompPkgSrv               1788 Component Package Support Server
+Slack                    1816 Slack
+
+-- More --
+
+
+    View only the processes I define and sort by PID
+
+        Get-Process SMSS,CSRSS,LSASS | Sort -Property Id
+
+PS C:\Users\student> Get-Process SMSS,CSRSS,LSASS | Sort -Property Id
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+     53       3     1056        940               504   0 smss
+    717      33     3684       3688               576   1 csrss
+    784      24     1928       2788               876   0 csrss
+   1612      39    10352      18076              1028   0 lsass
+
+
+    View modules/DLLs used by defined process and their file locations.
+
+        Get-Process chrome | foreach {$a} {$_.modules} | more
+
+        Get-Process -Name "*chrome*" | Select-Object -ExpandProperty Modules | more
+
+PS C:\Users\student> Get-Process chrome | foreach {$a} {$_.modules} | more
+
+   Size(K) ModuleName                                         FileName
+   ------- ----------                                         --------
+      2244 chrome.exe                                         C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+      2008 ntdll.dll                                          C:\WINDOWS\SYSTEM32\ntdll.dll
+       756 KERNEL32.DLL                                       C:\WINDOWS\System32\KERNEL32.DLL
+      2852 KERNELBASE.dll                                     C:\WINDOWS\System32\KERNELBASE.dll
+      1016 chrome_elf.dll                                     C:\Program Files (x86)\Google\Chrome\Application\88.0.4324...
+        40 VERSION.dll                                        C:\WINDOWS\SYSTEM32\VERSION.dll
+
+-- More --
+
+
+    View only modules/DLLs used by Chrome with "chrome" in the name and their file locations.
+
+        Get-Process chrome | foreach {$a} {$_.modules} | Where-Object ModuleName -like '*chrome*' | more
+
+        Get-Process -Name "*chrome*" | Select-Object -ExpandProperty Modules | Where-Object ModuleName -like '*chrome*' | more
+
+            Pipe in a ft -wrap to see full file name/path.
+
+PS C:\Users\student> Get-Process chrome | foreach {$a} {$_.modules} | Where-Object ModuleName -like '\*chrome*' | more
+
+   Size(K) ModuleName                                         FileName
+   ------- ----------                                         --------
+      2244 chrome.exe                                         C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+      1016 chrome_elf.dll                                     C:\Program Files (x86)\Google\Chrome\Application\88.0.4324...
+      2244 chrome.exe                                         C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+      1016 chrome_elf.dll                                     C:\Program Files (x86)\Google\Chrome\Application\88.0.4324...
+    152776 chrome.dll                                         C:\Program Files (x86)\Google\Chrome\Application\88.0.4324...
+
+-- More --
+
+
+    Use the Get-Ciminstance Win32_Process cmdlet to veiw processes with PPID
+
+    1) View Process instances with Win32 process.
+
+        Get-Ciminstance Win32_Process
+
+PS C:\WINDOWS\system32>  Get-CimInstance Win32_Process
+
+ProcessId Name                        HandleCount WorkingSetSize VirtualSize
+--------- ----                        ----------- -------------- -----------
+0         System Idle Process         0           8192           4096
+4         System                      4114        36864          3997696
+108       Registry                    0           34344960       93061120
+372       smss.exe                    59          425984         2203359731712
+476       csrss.exe                   583         2076672        2203413258240
+552       wininit.exe                 165         1449984        2203387731968
+560       csrss.exe                   360         1101824        2203404800000
+/---OUTPUT TRUNCATED---/
+
+
+    2) View the additional Properties with Get-Member
+
+PS C:\WINDOWS\system32>  Get-CimInstance Win32_Process | Get-Member
+   TypeName:
+Microsoft.Management.Infrastructure.CimInstance#root/cimv2/Win32_Process
+
+Name                       MemberType     Definition
+----                       ----------     ----------
+/---OUTPUT TRUNCATED---/
+ParentProcessId            Property       uint32 ParentProcessId {get;}
+/---OUTPUT TRUNCATED---/
+
+    3) View the processes with PID and PPID sorted by PID
+
+PS C:\WINDOWS\system32>  Get-CimInstance Win32_Process | select name,ProcessId,ParentProcessId | sort processid
+
+name                        ProcessId ParentProcessId
+----                        --------- ---------------
+System Idle Process                 0               0
+System                              4               0
+msedge.exe                         32            9744
+Registry                          108               4
+smss.exe                          372               4
+svchost.exe                       396             696
+dwm.exe                           408             612
+csrss.exe                         476             468
+notepad.exe                       488            7524
+/---OUTPUT TRUNCATED---/
+
+
+    View an instance of all Win32 (system) services.
+
+        Get-Ciminstance Win32_service | Select Name, Processid, Pathname | more
+
+            Pipe in ft -wrap to see full file name/path
+
+PS C:\Users\student> Get-Ciminstance Win32_service | Select Name, Processid, Pathname | ft -wrap | more
+
+Name                                                   Processid Pathname
+----                                                   --------- --------
+AdobeARMservice                                             4624 "C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\armsvc.exe"
+AJRouter                                                       0 C:\WINDOWS\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ALG                                                            0 C:\WINDOWS\System32\alg.exe
+AppIDSvc                                                       0 C:\WINDOWS\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+Appinfo                                                     7752 C:\WINDOWS\system32\svchost.exe -k netsvcs -p
+AppReadiness                                                   0 C:\WINDOWS\System32\svchost.exe -k AppReadiness -p
+AppXSvc                                                    13292 C:\WINDOWS\system32\svchost.exe -k wsappx -p
+AudioEndpointBuilder                                        3168 C:\WINDOWS\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+Audiosrv                                                    3920 C:\WINDOWS\System32\svchost.exe -k LocalServiceNetworkRestricted -p
+autotimesvc                                                    0 C:\WINDOWS\system32\svchost.exe -k autoTimeSvc
+AxInstSV                                                       0 C:\WINDOWS\system32\svchost.exe -k AxInstSVGroup
+BDESVC                                                      1628 C:\WINDOWS\System32\svchost.exe -k netsvcs -p
+BFE                                                         3908 C:\WINDOWS\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p
+BITS                                                           0 C:\WINDOWS\System32\svchost.exe -k netsvcs -p
+BrokerInfrastructure                                        1172 C:\WINDOWS\system32\svchost.exe -k DcomLaunch -p
+
+-- More --
+
+===============================================================================================================
+
+2.2.2 View Processes in Command Prompt
+
+View Services in Command Prompt
+
+
+    View Services
+
+        sc query
+
+Examples of the SC command
+
+C:\sc /?                           # Basic service enumeration
+C:\sc qc                           # Configuration information for a service
+C:\sc queryex eventlog             # Information for the eventlog service including pid
+C:\sc qdescription eventlog        # Query eventlog service description
+C:\sc qc eventlog                  # Show the binary command that loads the service
+C:\sc showsid eventlog             # Displays the service SID and status
+c:\sc enmudepend                   # Lists the services that cannot run unless the specified service is running
+
+sc query
+
+C:\Users\student>sc query | more
+
+SERVICE_NAME: AdobeARMservice
+DISPLAY_NAME: Adobe Acrobat Update Service
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: Appinfo
+DISPLAY_NAME: Application Information
+
+-- More --
+
+
+.Query the configuration information for netlogon service
+
+C:\windows\system32>sc qc netlogon
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: netlogon
+        TYPE               : 20  WIN32_SHARE_PROCESS
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\windows\system32\lsass.exe
+        LOAD_ORDER_GROUP   : MS_WindowsRemoteValidation
+        TAG                : 0
+        DISPLAY_NAME       : Netlogon
+        DEPENDENCIES       : LanmanWorkstation
+        SERVICE_START_NAME : LocalSystem
+
+
+View extended information for all services
+
+C:\Users\student>sc queryex type=service | more
+
+SERVICE_NAME: AdobeARMservice
+DISPLAY_NAME: Adobe Acrobat Update Service
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 4624
+        FLAGS              :
+
+SERVICE_NAME: Appinfo
+DISPLAY_NAME: Application Information
+
+-- More  --
+
+
+View extended information for all inactive services.
+
+C:\Users\student>sc queryex type=service state=inactive | more
+
+SERVICE_NAME: AJRouter
+DISPLAY_NAME: AllJoyn Router Service
+        TYPE               : 20  WIN32_SHARE_PROCESS
+        STATE              : 1  STOPPED
+        WIN32_EXIT_CODE    : 1077  (0x435)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 0
+        FLAGS              :
+
+SERVICE_NAME: ALG
+DISPLAY_NAME: Application Layer Gateway Service
+        TYPE               : 10  WIN32_OWN_PROCESS
+
+-- More  --
+
+
+Query for information for the eventlog service including pid
+
+C:\windows\system32>sc queryex eventlog
+
+SERVICE_NAME: eventlog
+        TYPE               : 30  WIN32
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+        PID                : 1296
+        FLAGS              :
+
+Use Tasklist to find out what process kicked off the eventlog service
+
+C:\windows\system32>tasklist /FI "pid eq 1296" /v
+
+Image Name  PID  Session Name Session# Mem Usage Status  User Name                  CPU Time Window Title
+=========== ==== ============ ======== ========= ======= ========================== ======== ============
+svchost.exe 1296 Services            0 12,468 K  Unknown NT Authority\Local Service  0:00:02 N/A
+
+
+Query eventlog service description
+
+C:\windows\system32>sc qdescription eventlog
+[SC] QueryServiceConfig2 SUCCESS
+
+SERVICE_NAME: eventlog
+DESCRIPTION:  This service manages events and event logs. It supports logging events, querying events, subscribing to events, archiving event logs, and managing event metadata. It can display events in both XML and plain text format. Stopping this service may compromise security and reliability of the system.
+
+
+Show the binary command that loads the eventlog service
+
+C:\windows\system32>sc qc eventlog
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: eventlog
+        TYPE               : 20  WIN32_SHARE_PROCESS
+        START_TYPE         : 2   AUTO_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\windows\System32\svchost.exe -k LocalServiceNetworkRestricted -p
+        LOAD_ORDER_GROUP   : Event Log
+        TAG                : 0
+        DISPLAY_NAME       : Windows Event Log
+        DEPENDENCIES       :
+        SERVICE_START_NAME : NT AUTHORITY\LocalService
+
+
+Displays the service SID and status
+
+C:\windows\system32>sc showsid eventlog
+
+NAME: eventlog
+SERVICE SID: S-1-5-80-880578595-1860270145-482643319-2788375705-1540778122
+STATUS: Active
+
+
+View Services in the GUI
+
+  +++++++++++++++++++++++++  services.msc  _++++++++++++++++++++++++++++++++++++
