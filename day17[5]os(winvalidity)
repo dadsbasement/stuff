@@ -146,6 +146,12 @@ ProcessId Name                        HandleCount WorkingSetSize VirtualSize
 552       wininit.exe                 165         1449984        2203387731968
 560       csrss.exe                   360         1101824        2203404800000
 /---OUTPUT TRUNCATED---/
+View Services in the GUI
+
+
+    services.msc
+
+        Pull it up in the Windows search bar or run in cmd "services.msc"
 
 
     2) View the additional Properties with Get-Member
@@ -370,3 +376,37 @@ STATUS: Active
 View Services in the GUI
 
   +++++++++++++++++++++++++  services.msc  _++++++++++++++++++++++++++++++++++++
+  
+  also for tasks
+  taskschd.msc
+  -----------------------------------------------------------------------
+  
+  
+  NETWORK
+  
+
+
+    Displays all TCP/UDP connections with ports in numerical form with PID and executable associated to the connections
+
+        netstat -anob | more
+
+andy.dwyer@ADMIN-STATION C:\Users\andy.dwyer>netstat -anob | more
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:22             0.0.0.0:0              LISTENING       2944
+ [sshd.exe]
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       832
+  RpcSs
+ [svchost.exe]
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+ Can not obtain ownership information
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       304
+  TermService
+ [svchost.exe]
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING       4456
+  CDPSvc
+
+-- More --
+
