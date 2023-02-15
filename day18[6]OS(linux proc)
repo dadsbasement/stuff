@@ -58,3 +58,4 @@ Cron Syntax
 
 sudo lsof -c sshd
 
+sudo lsof -Pnp pid
