@@ -3,6 +3,9 @@ HTOP
 TOP COMMAND
 f to filter
 
+sudo lsof -i udp:123
+find commands relating to port 
+sudo lsof -Pnp 1374
 
 
 tartup Processes (sysV)
