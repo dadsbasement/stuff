@@ -1,1 +1,60 @@
+TOP COMMAND
+f to filter
+
+
+
+tartup Processes (sysV)
+
+    There are two primary processes after startup:
+
+        For kernel-space processes [kthreadd] ( PID = 2 )
+
+        For user-space processes /sbin/init ( PID = 1 )
+
+    All kernel processes are fork()ed from [kthreadd] and all user processes are fork()ed from /sbin/init or direct ancestor.
+
+They can be identified by the name enclosed in square brackets [] (using the -f option with ps). kthreadd spawned processes will have a PPID of 2.
+
+SBIN/INIT IS PARENT OF ALL USER PROCESSES
+
+
+gives everything that doesnt have ppid of 2 
+ps -Nlf --ppid 2 | head
+capital N is the not p
+
+------------------------------------------------------------------
+SYSTEM CALLS
+    
+    fork() When a process calls fork(), the kernel creates a nearly identical copy of the process.
+
+    exec() When a process calls exec(program), the kernel starts program, replacing the current process.
+    
+    --------------------------------------------------------------------------------------------
+    ORPHAN AND ZOMBIE
+    
+    Orphan - Parent process exited, adopted by sbin/init with PPID of 1.
+
+    All daemons are orphans
+
+    disown -a && exit # Close a shell/terminal and force all children to be adopted
+
+Zombie (defunct) - completed process, but still has an entry in the process table, waiting on parent to acknowledge or terminate.
+
+++++Malicious processes are sometimes orphaned and named to make it look like a daemon process ‘ps --ppid 1 -lf’++++++++
+
+--------------------------------------------------------------------------------------------------------
+
+Cron Syntax
+
+* * * * * /directory/and/command
+| | | | |
+| | | | +---- Day of the Week   (range: 0-7, 1 = Monday)
+| | | +------ Month of the Year (range: 1-12)
+| | +-------- Day of the Month  (range: 1-31)
+| +---------- Hour              (range: 0-23)
++------------ Minute            (range: 0-59)
+
+-------------------------------------------------------------------------------------
+
+sudo lsof -c sshd
 
