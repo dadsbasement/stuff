@@ -1,1 +1,71 @@
+for auditing policy manipulation
+HKLM\Security\Policy\
 
+auditpol /get /category:*
+
+auditpol /get /subcategory:"File System"
+
+get-eventlog
+
+get-winevent -filterhashtable @(logname='security';id='4624'} | ft -wrap
+
+-------------------------------------------------------------------------------------------------------
+They are located in HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count\ * they are encoded in ROT13
+
+The GUID represents a particular file extension.
+
+    CEBFF5CD-ACE2-4F4F-9178-9926F41749EA A list of applications, files, links, and other objects that have been accessed
+
+    F4E57C4B-2036-45F0-A9AB-443BCFE33D9F Lists the Shortcut Links used to start programs
+
+
+2.2 Demo
+CEBFF5CD: Executable File Execution
+
+PS C:\> Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count" 
+
+HRZR_PGYPHNPbhag:pgbe                                                            : {255, 255, 255, 255...}
+Zvpebfbsg.Trgfgnegrq_8jrxlo3q8oojr!Ncc                                           : {0, 0, 0, 0...}
+HRZR_PGYFRFFVBA                                                                  : {0, 0, 0, 0...}
+Zvpebfbsg.JvaqbjfSrrqonpxUho_8jrxlo3q8oojr!Ncc                                   : {0, 0, 0, 0...}
+Zvpebfbsg.JvaqbjfZncf_8jrxlo3q8oojr!Ncc                                          : {0, 0, 0, 0...}
+Zvpebfbsg.Crbcyr_8jrxlo3q8oojr!k4p7n3o7ql2188l46q4ln362l19np5n5805r5k            : {0, 0, 0, 0...}
+Zvpebfbsg.ZvpebfbsgFgvpxlAbgrf_8jrxlo3q8oojr!Ncc                                 : {0, 0, 0, 0...
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+Q: Where can you look to pull all users that have logged on to the computer and have ran executables?
+
+Q: How can we change our command to look at all users Userassist artifacts?
+
+A: From
+
+PS C:\> Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
+
+To
+
+PS C:\> Get-ItemProperty "Registry::Hkey_Users\*\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````
+Get-LocalUser | select Name,SID 
+
+ 	Get-LocalUser will show local Users and SID on a system
+	Get-WmiObject will show local and domain Users and SID 
+  
+  wmic UserAccount get name,sid 
+  
+  ```````````````````````````````````````````````````````````````````````````````````````````````````
+ show all bam artifacts from everyone
+ Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*
+ 
+ 
+1 wmic useraccount  get caption,sid | more 
+Caption                           SID
+ADMIN-STATION\Admin               S-1-5-21-1584283910-3275287195-1754958050-1000
+ADMIN-STATION\Administrator       S-1-5-21-1584283910-3275287195-1754958050-500
+ADMIN-STATION\andy.dwyer          S-1-5-21-1584283910-3275287195-1754958050-1005
+
+2 Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-1584283910-3275287195-1754958050-1005' 
+
+1Get the SID of every local user on the machine
+2Insert the SID of andy.dwyer from above. Output shows the BAM artifact from andy.dwyer
+```````````````````````````````````````````````````````````````````````````````````````````````````````````
