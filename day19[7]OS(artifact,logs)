@@ -1,6 +1,6 @@
 https://os.cybbh.io/public/os/latest/index.html
 http://10.50.21.56:8000/challenges#Start_Windows_Auditing_and_Logging
-
+10.50.22.223 admin station
 for auditing policy manipulation
 HKLM\Security\Policy\
 
