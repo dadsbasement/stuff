@@ -1,3 +1,6 @@
+https://os.cybbh.io/public/os/latest/index.html
+http://10.50.21.56:8000/challenges#Start_Windows_Auditing_and_Logging
+
 for auditing policy manipulation
 HKLM\Security\Policy\
 
@@ -8,6 +11,29 @@ auditpol /get /subcategory:"File System"
 get-eventlog
 
 get-winevent -filterhashtable @(logname='security';id='4624'} | ft -wrap
+
+------------------------------------------------------------------------------------------------------
+
+    View entire auditpol list
+
+        	auditpol /get /category:*
+
+    Set File SYstem subcategory to audit
+
+        	auditpol /set /subcategory:"File System"
+
+    Remove File System subcategory auditing
+
+       	 	auditpol /set /subcategory:"File System" /success:disable
+
+    To list the global object access auditing entries set on files or folders:
+
+       	 	auditpol /resourceSACL /type:File /view
+
+    To list the global object access auditing entries set on Registry Keys
+
+		auditpol /resourceSACL /type:Key /view
+
 
 -------------------------------------------------------------------------------------------------------
 They are located in HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count\ * they are encoded in ROT13
@@ -33,6 +59,59 @@ Zvpebfbsg.Crbcyr_8jrxlo3q8oojr!k4p7n3o7ql2188l46q4ln362l19np5n5805r5k           
 Zvpebfbsg.ZvpebfbsgFgvpxlAbgrf_8jrxlo3q8oojr!Ncc                                 : {0, 0, 0, 0...
 ``````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
+View/ Analyze Event Logs - CLI
+
+    show all logs
+
+        wevtutil el
+
+    get log info
+
+        wevtutil gli security
+
+    get last 3 events
+
+        wevtutil qe security /c:3 /f:text
+``````````````````````````````````````````````````````````````````````````````````````````
+View/ Analyze Event Logs - Powershell
+
+    View newest 10 System Logs
+
+        Get-EventLog -LogName System -Newest 10
+
+    View the entire message field in the Security Log
+
+        Get-Eventlog -LogName Security | ft -wrap
+
+    Search logs with mutiple criteria
+
+        get-winevent -FilterHashtable @{logname="security";id="4624"} | select -first 5 | ft -wrap
+````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+Event IDs to Search for Malicious Actors
+
+User Added to Privileged Group
+4728, 4732, 475
+Security-Enabled group Modification
+473-
+Successful/ Failed User Account Login	
+4624, 4625
+PowerShell Transcript
+    Allows the capture of the input and output of Windows PowerShell commands into text-based transcripts.
+
+        Start-Transcript
+
+    View Powershell console History
+
+        Get-History
+
+    View entire powershell History
+
+        Get-Content "C:\users\$env:username\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt"
+
+
+`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
 Q: Where can you look to pull all users that have logged on to the computer and have ran executables?
 
 Q: How can we change our command to look at all users Userassist artifacts?
@@ -55,8 +134,13 @@ Get-LocalUser | select Name,SID
   
   ```````````````````````````````````````````````````````````````````````````````````````````````````
  show all bam artifacts from everyone
+ 
  Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*
  
+ Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*' (Windows 1709 & 1803)
+
+Get-Itemproperty 'HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*' (Windows 1809 and newer)
+
  
 1 wmic useraccount  get caption,sid | more 
 Caption                           SID
@@ -69,3 +153,66 @@ ADMIN-STATION\andy.dwyer          S-1-5-21-1584283910-3275287195-1754958050-1005
 1Get the SID of every local user on the machine
 2Insert the SID of andy.dwyer from above. Output shows the BAM artifact from andy.dwyer
 ```````````````````````````````````````````````````````````````````````````````````````````````````````````
+ROT 13 stuff guid
+
+They are located in HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count\ * they are encoded in ROT13
+
+The GUID represents a particular file extension.
+
+    CEBFF5CD-ACE2-4F4F-9178-9926F41749EA A list of applications, files, links, and other objects that have been accessed
+
+    F4E57C4B-2036-45F0-A9AB-443BCFE33D9F Lists the Shortcut Links used to start programs
+
+
+2.2 Demo
+CEBFF5CD: Executable File Execution
+
+PS C:\> Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count" 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+RECYCLE BIN
+
+
+Get-Childitem 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force | select FullName 
+FullName
+
+
+Match SID to USER:
+
+ PS C:\> wmic useraccount where 'sid="S-1-5-21-1584283910-3275287195-1754958050-1005"' get name 
+Name
+andy.dwyer
+
+	To find Recycle Bin artifacts for a specific user, match the SID, then append it to the previous command:
+
+
+PS C:\> Get-Content 'C:\$Recycle.Bin\S-1-5-21-1584283910-3275287195-1754958050-1005\$R8QZ1U8.txt' 
+This is the file for Auditing
+
+	Reads the contents of a particular file within the Recycle BIN
+	
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+Recent Files
+
+Registry Key that will track the last files and folders opened and is used to populate data in “Recent” menus of the Start menu.
+
+    Tracks last 150 files or folders opened.
+
+    Entry and modification time of this key will be the time and location the last file of a specific extension was opened.
+
+7.1 Location
+
+    HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+
+    HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt
+
+
+7.2 Demo
+
+Query the Hex Value Stored in the Key
+
+PS C:\> Get-Item 'Registry::\HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.*' 
+
+----------------------------------------------------------------------
