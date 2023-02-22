@@ -1,0 +1,56 @@
+Volatile Memory
+	
+
+    Non-persistent - requires power to maintain stored information; immediate loss of data after power loss.
+
+    Examples: RAM
+
+Non-Volatile Memory
+	
+
+    Persistent - Does not require a continuous power supply to retain the dta stored in a computing device
+
+    Examples: HDD, USB
+
+
+Analyzing a system’s RAM to determine information about running programs, the operating system, and the overall state of a computer
+
+    
+    Order of Volatility - the halflife of data
+    
+    CPU registers, cache.\volatility_2.6_win64_standalone.exe -f ".\cridex.vmem" --profile=WinXPSP2x86 connscan
+
+    Routing table, ARP cache, process table, kernel stats, memory
+
+    Temporary file systems
+
+    Disk
+
+    Remote logging and monitoring data
+
+    Physical configuration, network topology
+
+    Archival media - backups
+    ``````````````````````````````````````````````````````
+    
+    
+    ACTIVE DIRECTORY 
+    
+    
+    
+    Get-Command -Module activedirectory
+    
+    Get-ADDefaultDomainPasswordPolicy
+     
+    Get-ADFineGrainedPasswordPolicy -Filter {name -like "*"}
+   -No returns means it is not set-
+   
+   Get-ADForest
+   
+   Get-ADGroup -Filter *
+   
+   Get-ADGroup -Identity 'IA Analysts Team'
+    
+   Get-ADGroupMember -Identity 'IA Analysts Team' -Recursive
+   
+   Get-ADUser -Identity 'Nina.Webster' -Properties Description
