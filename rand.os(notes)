@@ -1,0 +1,13 @@
+dir /r shows hidden files and data streams
+
+/etc/pam.d/* for password encrypt
+
+echo -n  "blahblah" | wc -m  to get things in a string
+
+REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ /v EnableLUA
+CHECK UAC
+
+get-service name
+
+stack 7
+29.233 rdp
