@@ -7,7 +7,12 @@ echo -n  "blahblah" | wc -m  to get things in a string
 REG QUERY HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ /v EnableLUA
 CHECK UAC
 
+Get-ADGroupMember -Identity 'IA Analysts Team' -Recursive
+get all members of a group and sub groups
+
 get-service name
 
 stack 7
 29.233 rdp
+
+get-aduser -filter * -property * | where-object -property telephoneNumber -match '336-6754'
