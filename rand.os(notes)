@@ -16,3 +16,8 @@ stack 7
 29.233 rdp
 
 get-aduser -filter * -property * | where-object -property telephoneNumber -match '336-6754'
+
+
+ps -p pid 
+
+
