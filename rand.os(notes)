@@ -28,3 +28,54 @@ ps -p pid
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings #On 1809 and Newer
 
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\UserSettings #On 1803 and below
+
+
+: What are some Registry keys that can be used for autoruns?
+
+    Registry Keys Locations, Locations connected with Services.
+
+        HKLM\Software\Microsoft\Windows\CurrentVerstion\Run - Local Machine
+
+        HKLM\Software\Microsoft\Windows\CurrentVerstion\RunOnce
+
+        HKLM\System\CurrentControlSet\Services
+
+    Remember that the Users have individual Hives with autoruns as well as the Current User.
+
+        HKCU\Software\Microsoft\Windows\CurrentVerstion\Run - Current User
+
+        HKCU\Software\Microsoft\Windows\CurrentVerstion\RunOnce
+
+        HKU\<sid>\Software\Microsoft\Windows\CurrentVerstion\Run - Specific User
+
+        HKU\<sid>\Software\Microsoft\Windows\CurrentVerstion\RunOnce
+
+    The order in which services are loaded can be adjusted.
+
+        HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\ServiceGroupOrder
+
+        HKEY_LOCAL_MACHINE\CurrentControlSet\Control\GroupOrderList
+
+=================================================================================
+
+Current User, Current Host - $PROFILE.CurrentUserCurrentHost
+Current User, All Hosts - $PROFILE.CurrentUserAllHosts
+All Users, Current Host - $PROFILE.AllUsersCurrentHost
+All Users, All Hosts - $PROFILE.AllUsersAllHosts
+
+Test-Path -Path $PROFILE.AllUsersAllHosts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
