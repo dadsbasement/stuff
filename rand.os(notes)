@@ -21,3 +21,4 @@ get-aduser -filter * -property * | where-object -property telephoneNumber -match
 ps -p pid 
 
 
+ grep -r ".txt" --files-with-matches /* 2>/dev/null
