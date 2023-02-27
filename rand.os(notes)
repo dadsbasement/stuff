@@ -22,3 +22,9 @@ ps -p pid
 
 
  grep -r ".txt" --files-with-matches /* 2>/dev/null
+
+
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings #On 1809 and Newer
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\UserSettings #On 1803 and below
