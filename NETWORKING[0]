@@ -1,3 +1,62 @@
 DYWA-002-M
 tudent19
 Command: ssh student@10.50.33.254 -X
+
+follow nummerically order of ctfd
+
+
+
+
+    Binary
+    Binary, as suggested by the prefix "bi", can exist in only two states "on" or "off" which is logically represented as "true" or "false" and mathematically a "1" or "0". This is fundamentally how every computer component relays information. The unambiguous nature of binary is especially advantageous in networking since transmission can cause signals to become polluted with noise.
+
+
+    Representation of binary information : Bits=1, Nibbles=4, Bytes=8, etc.
+    The bit is a binary representation of the smallest set of information in a computer. A collection of these bits must be used to store large amounts of information. The most common groupings and associated terms are listed below:
+
+`````````````````````````````````````````````````````````````````````````````````
+
+    Base 2 - Lowest level format and is the base language used by computer systems. Uses a series of "0" and "1" in groupings of 8-bits or 1 byte.
+
+        01000010 01100001 01110011 01100101 00100000 00110010
+
+    Base 10 - Basis for the numbering system used by humans.
+
+        66 97 115 101 32 49 48
+
+    Base 16 - Used by computers and humans to express larger decimal numbers or long streams of binary into more manageable groupings.
+
+        42 61 73 65 20 31 36
+
+    Base 64 - Like HEX, it allows groupings up to 6-bits of binary (0-63 decimal). Characters used are (A-Z), (a-z), (0-9), and (+, /). That is (26) + (26) + (10) + (2) respectively. In order to be compatible with binary, it uses 4 groupings of 6-bits (24 total bits) so that it will equate to 3 bytes of binary ( 24 bits). For data not consuming the full 24-bits, it will use "=" signs for each 6 unused bits at the end as padding.
+
+        QmFzZSA2NA==
+
+`````````````````````````````````````````````````````````````````````````````````````````
+7 - Application
+Data
+DNS, HTTP, TELNET
+
+6 - Presentation
+Dat
+SSL, TLS, JPEG, GIF
+
+5 - Session
+Data
+NetBIOS, PPTP, RPC, NFS
+
+4 - Transport
+Segment/Datagram
+TCP, UDP
+
+3 - Network
+Packet
+IP, ICMP, IGMP
+
+2 - Data Link
+Frames
+PPP, ATM, 802.2/3 Ethernet, Frame Relay
+
+1 - Physical
+Bits
+Bluetooth, USB, 802.11 (Wi-Fi), DSL, 1000Base-T
