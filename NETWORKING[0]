@@ -61,3 +61,52 @@ PPP, ATM, 802.2/3 Ethernet, Frame Relay
 Bits
 Bluetooth, USB, 802.11 (Wi-Fi), DSL, 1000Base-T
 ---------------------------------------------------
+socks header used for proxy
+
+
+
+Netbios Dgram Service - UDP 138
+
+Netbios Session Service - TCP 139
+
+RPC is a request/response protocol.
+    Sends a request for information to a external server
+
+    Receives the information from the external server
+
+    Display collected data to User
+
+Examples of RPC are:
+
+    SOAP - SOAP Example PCAP from Cloudshark
+
+    XML
+
+    JSON
+
+    NFS
+==========================================================================================
+
+Passive FTP sidesteps the issue of Active mode by reversing the conversation. The client initiates both the command and data connections.
+
+
+----------------------------------------------------------------------------------------------
+
+
+sudo tcpdump -i inerface -XXvv
+sudo tcpdump -i interface -w something.pcap
+sudo tcpdump -i interface -r something.pcap
+sudo tcpdump !(port 22) -vn
+
+----------------------------------------------------------
+
+
+
+STP operates by flooding Bridge Protocol Data Units (BPDUs) to all other switches in the network. These BPDUs are used to:
+
+    Elect the Root Bridge
+
+    Identify the Root port on each non-root bridge
+
+    Identify the Designated port for each segment
+
