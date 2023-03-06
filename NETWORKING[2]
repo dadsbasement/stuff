@@ -1,0 +1,15 @@
+
+    Stream socket - Normally used with TCP, SCTP, and Bluetooth. A stream socket provides a connection-oriented and sequenced 
+    flow of data which has methods for establishment and teardown of connections as well as error detection.
+
+    Datagram socket - Normally used with UDP. A datagram socket is connection-less by nature. 
+    Sockets built this way can send and receive data, but there is no mechanism to retransmit data if a packet is dropped.
+
+    Raw socket - A raw socket allows for the direct sending and receiving of IP packets without
+    automatic protocol-specific transport layer formatting, meaning that all headers are typically included in the packet 
+    and not removed when moving up the network stack.
+
+    Raw sockets are used in user applications such as nmap, tcpdump, and wireshark when using 
+    elevated privilege levels. Nmap needs to open raw sockets when attempting to set specific flags for performing certain scans. 
+    Tcpdump requires raw sockets in order to receive each packet, in its entirety, for total packet analysis.
+
