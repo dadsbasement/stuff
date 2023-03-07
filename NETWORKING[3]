@@ -1,0 +1,8 @@
+wget -r ip to download everything
+wget -r ftp://ip/
+
+
+show config
+show interfaces
+
+/30 is only two routing devices
