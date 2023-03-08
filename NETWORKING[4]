@@ -116,5 +116,13 @@ which tcpdump wireshark nmap telnet wget curl
 dynamic tunneling
 
 ssh user@IP_B -D 9050 -NT
- 
+proxychains wget -r ip_C
+
+
+
+
+a   ssh -p 2222 user@IP_B
+b   ssh user@IP_C
+
+a ssh -p 2222 user@IP_B -L 4444:IP_C:22 -NT
 
