@@ -1,0 +1,42 @@
+published in RFC 2228
+
+should NOT be confused with traditional FTP tunneled over SSH or SFTP, a completely separate protocol.
+
+can be operated in 2 modes: implicit and explicit
+
+    implicit mode assumes encryption at all times and uses TCP port 990 for control and TCP port 989 for data with encryption happening on both channels.
+
+    explicit mode uses port 21 and allow for the request of a secure or unsecure connection. The server can be configured to drop or limit unsecure connections.
+
+uses SSL/TLS for encryption
+
+Authentication through username/password or PKI
+
+has interactive terminal access
+
+still requires multiple open ports for multiple connections
+
+
+
+curl ftp://10.0.0.104
+
+to see whats there
+
+curl frp://10.0.0.104/hint.txt
+
+send file nc 10.2.0.2 9001 < file.txt
+recoeve file nc -l -p > newfile.txt
+
+
+
+File Transfer with /dev/tcp
+
+On the receiving box:
+
+nc -l -p 1111 > file.txt
+
+On the sending box:
+
+cat file.txt > /dev/tcp/10.2.0.2/1111
+
+This method is useful for host that does not have NETCAT available.
