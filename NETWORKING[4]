@@ -82,9 +82,9 @@ A$  ssh user@IP_B -L 1111:IP_C:22
     
     ssh user@IP_B -L 1111:IP_C:22 -NT
     connect to b        tunnel piece
-
+c
 WINDOW 2
-
+A$ wget -r localhost:1111
 
 
 
@@ -98,6 +98,11 @@ NET RECON METHOLODY
     if 21 or 80 wget -r IP_ADDR or wget -r ftp://IP_ADDR
     
 SCAN METHODOLOGY
+1.quick scan 21-23,80
+    nmap -Pn -p 21-23,80 192.168.0.5,20,25 -T4
+2.specific ports based on hints found
+3.well known ports 0-1023
+`                   65535
 
 PASSIVE RECON METHODOLOGY
 hostname
@@ -106,4 +111,10 @@ ip neigh, arp -a
 netstat -ntlp or ss -ntlp
 which tcpdump wireshark nmap telnet wget curl
 
+-----------------------------------------------
+ A/B/C
+dynamic tunneling
+
+ssh user@IP_B -D 9050 -NT
+ 
 
