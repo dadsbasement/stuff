@@ -17,12 +17,33 @@ has interactive terminal access
 still requires multiple open ports for multiple connections
 
 
+WGET AND CURL-----------------------------------------------------
 
-curl ftp://10.0.0.104
+    If HTTP ports are open we can use wget, curl, or a web-browser like firefox to interact with it. If the HTTP is running on an alternate port we can use the <ip>:<port> to interact with it.
 
-to see whats there
+        wget -r http://[ip] or wget -r http://[ip]:[port]
 
-curl frp://10.0.0.104/hint.txt
+        curl http://[ip] or curl http://[ip]:[port]
+
+        firefox [ip] or `firefox [ip]:[port]
+
+    If FTP port is open we can use wget, curl or ftp to interact with it.
+
+        wget -r ftp://[ip]
+
+        curl ftp://[ip] or curl ftp://[ip]/file
+
+        ftp [ip]
+
+    If SSH, Telnet, or any other ports are open we can banner grab these ports to verify the service is running on the ports.
+
+        nc [ip] [port]
+
+        telnet [ip] or telnet [ip] [port]
+
+        ssh [username]@[ip] or ssh [username]@[ip] -p [port]
+
+--------------------------------------------------------------------------------------------------------------
 
 send file nc 10.2.0.2 9001 < file.txt
 recoeve file nc -l -p > newfile.txt
@@ -77,8 +98,8 @@ nc -l -p <any unfiltered port> -e /bin/bash
 A/B/C/D
 
 WINDOW 1 `- GOES TO BOX C
-A$  ssh user@IP_B -L 1111:IP_C:22
-        tunnel piece    connection piece
+A$  ssh user@IP_B -L 1111:user@IP_C:22
+        connection piece    tunnel piece
     
     ssh user@IP_B -L 1111:IP_C:22 -NT
     connect to b        tunnel piece
@@ -86,7 +107,11 @@ c
 WINDOW 2
 A$ wget -r localhost:1111
 
+GOING TO D  
+    D is port 23
 
+@A ssh -p 1111 user@localhost -L 2222:IP_D:23
+telnet localhost -p
 
 
 NET RECON METHOLODY
@@ -106,7 +131,7 @@ SCAN METHODOLOGY
 
 PASSIVE RECON METHODOLOGY
 hostname
-ip a, ofcpmfog
+ip a, ifconfig
 ip neigh, arp -a
 netstat -ntlp or ss -ntlp
 which tcpdump wireshark nmap telnet wget curl
@@ -118,6 +143,7 @@ dynamic tunneling
 ssh user@IP_B -D 9050 -NT
 proxychains wget -r ip_C
 
+proxychains nmap 
 
 
 
@@ -125,4 +151,9 @@ a   ssh -p 2222 user@IP_B
 b   ssh user@IP_C
 
 a ssh -p 2222 user@IP_B -L 4444:IP_C:22 -NT
+-----------------------------------------------
+challenges
+OPS$ ssh cctc@localhost -p 1111  ||| lcoal listening port on OPS
 
+Which ssh syntax would properly setup a Local tunnel to PC1 SSH port? (Max 2 Attempts)
+ssh -L 1111:localhost:22 cctc@10.50.1.150 -NT 
