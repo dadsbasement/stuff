@@ -1,0 +1,28 @@
+
+
+In both networking and in life What you want is not necessarily what you get. As we have demonstrated the varying results from different types of firewalls let us discuss a possible unintended result from packet filtering firewalls. It is important to be mindful of the direction that your rules are applied. Typically any inbound rules will not have an impact on outbound traffic on that same interface. To effectively control traffic you will need to visualize the traffic in 4 ways.
+
+    Traffic originating from the localhost to the remote-host
+
+    Return traffic from that remote-host back to the localhost.
+
+    Traffic originating from the remote-host to the localhost
+
+    Return traffic from the localhost back to the remote-host.
+
+Each one of these methods will have different traffic flows and patterns that need to be addressed to ensure you meet your filtering intent.
+
+The goal when placing any rules is to first determine the direction of the intended traffic as it "flows" through each network device. Placement is important as to not affect other traffic. Bi-directional communication must also be taken into account. This means that not only the traffic from a A to B but also the response from B back to A.
+
+
+
+    NF_IP_PRE_ROUTING: Triggers on any incoming traffic after entering the network stack. This hook is named PREROUTING and is processed before any routing decisions have been made regarding where to send the packet.
+
+    NF_IP_LOCAL_IN: Triggers on incoming packets that have been determined through the internal routing decision that the packet is destined for the local system. This hook is named INPUT.
+
+    NF_IP_FORWARD: Triggers on packets that have been determined through the internal routing decision that the packet is to be forwarded to another host through another outbound interface than what it came in on. This hook is named FORWARD.
+
+    NF_IP_LOCAL_OUT: Triggers on outbound traffic created by any local process as soon it hits the network stack. This hook is called OUTPUT.
+
+    NF_IP_POST_ROUTING: Triggers on any outgoing or forwarded traffic after routing has taken place and just before being transmitted on the wire. This hook is called POSTROUTING.
+
