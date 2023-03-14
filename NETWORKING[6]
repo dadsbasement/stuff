@@ -43,6 +43,8 @@ sudo iptables -A -f -j DROP
 sudo iptabels -A INPUT -i eth0 -p tcp --syn -m limit --limit 10/second -j ACCEPT
 
 sudo iptables-save > ipt.conf
+sudo iptables -A INPUT -p tcp -m multiport --ports 6010,6011,6012 -j ACCEPT
+
 -------------------------------------------------------------------
 
 nftable 
@@ -97,3 +99,4 @@ Deletes rule at handle
 nft delete rule [family] [table] [chain] [handle <handle>]
 
 make sure it says accept before fluhsing
+sudo iptables -A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
