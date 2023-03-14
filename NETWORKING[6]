@@ -28,3 +28,18 @@ The goal when placing any rules is to first determine the direction of the inten
 
 
 sudo iptables -L
+
+I puts on top and A appends
+
+sudo iptables -I INPUT -s 172.16.82.106 -j DROP
+sudo iptables -I OUTPUT -d 172.16.82.106 -j DROP
+
+sudo iptables -A INPUT -s 172.16.82.112 -j ACCEPT
+sudo iptables -A OUTPUT -d 172.16.82.112 -j ACCEPT
+
+
+sudo iptables -A INPUT -m state --state INVALID -j DROP
+sudo iptables -A -f -j DROP
+sudo iptabels -A INPUT -i eth0 -p tcp --syn -m limit --limit 10/second -j ACCEPT
+
+sudo iptables-save > ipt.conf
