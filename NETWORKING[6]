@@ -26,3 +26,5 @@ The goal when placing any rules is to first determine the direction of the inten
 
     NF_IP_POST_ROUTING: Triggers on any outgoing or forwarded traffic after routing has taken place and just before being transmitted on the wire. This hook is called POSTROUTING.
 
+
+sudo iptables -L
