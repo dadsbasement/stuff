@@ -1,3 +1,8 @@
 sudo snort -D -l /var/log/snort -c /etc/snort/snort.conf
 LOG = /var/log/snort
 CONF = /etc/snort/snort.conf
+
+sudo file * 
+sudo tcpdump -tnr *96 | awk '{print $2} {print $4}' | sort | sed 's/:$//' | uniq -c
+
+
