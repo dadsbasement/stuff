@@ -136,6 +136,34 @@ ip neigh, arp -a
 netstat -ntlp or ss -ntlp
 which tcpdump wireshark nmap telnet wget curl
 
+ 	
+
+
+Passive
+* DNS Lookups (DIG)
+* Whois
+* Job site listings
+* Shodan
+	
+
+* Packet Sniffing
+* ARP Cache
+* IP Address
+* Running Services
+* Open Ports
+
+Active
+	
+* Ping scans
+* NMAP scans
+* Port Scans
+* OS Identification
+	
+* DNS Queries
+* ARP Requests
+* Ping Scans
+* Port Scans
+* Network Scanning
 -----------------------------------------------
  A/B/C
 dynamic tunneling
