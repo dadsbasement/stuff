@@ -99,3 +99,49 @@ When it comes to a Black Box pentest, there isn’t a whole lot of information p
 Check ports, processes, services.
 
 associating vulnerabilities with exploits 
+==============================================================================================================
+
+scanning recon 
+
+
+
+
+What types of artifacts/deliverables do we want to collect and provide to operators?
+Examples include:
+
+    Screenshots
+
+    Timelines related to Data
+
+    Sensitive Target Data
+
+    Artifacts/Attributes from target
+
+    Operational Notes and Methods of Retrieval
+
+    Visualization of Collected Data
+
+    Database of Collected Indicators
+`````````````````````````````````````````````````
+Data to Collect.
+Web Data
+
+Cached Content, Analytics, Proxy Web Application, Command Line Interrogation
+
+Sensitive Data
+
+Business Data, Profiles, Non-Profits/Charities, Business Filings, Historical and Public Listings
+
+Publicly Accessible
+
+Physical Addresses, Phone Numbers, Email Addresses, User Names, Search Engine Data, Web and Traffic Cameras, Wireless Access Point Data
+
+Social Media
+
+Twitter, Facebook, Instagram, People Searches, Registry and Wish Lists
+
+Domain and IP Data
+
+DNS Registration, IP Address Assignments, Geolocation Data, Whois
+
+==============================================================================================
