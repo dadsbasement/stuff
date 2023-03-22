@@ -145,6 +145,12 @@ Domain and IP Data
 DNS Registration, IP Address Assignments, Geolocation Data, Whois
 
 ==============================================================================================
+
+Host Discovery
+Port Discovery
+Port Interogation
+
+
 pip install lxml requests
 
 Script
@@ -159,3 +165,10 @@ tree = lxml.html.fromstring(page.content)
 authors = tree.xpath('//small[@class="author"]/text()')
 
 print ('Authors: ',authors)
+
+
+
+
+nmap scripts
+/usr/share/nmap/scripts
+nmap -Pn --script --http-enum
