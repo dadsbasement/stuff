@@ -1,0 +1,98 @@
+Penetration test.
+
+Phase 1: Mission Definition
+
+    Define mission goals and targets.
+
+    Determine scope of mission.
+
+    What networks are valid targets?
+
+    What machines are valid targets?
+
+    What attacks or exploits are authorized/appropriate?
+
+    Define RoE.
+
+Phase 2: Recon
+
+    Information gathering about the target through public sources.
+
+    Websites, job postings, search engines, etc.
+
+    Done without touching the target.
+
+Phase 3: Footprinting
+
+    Accumulate data through scanning and/or interation with the target/target resources.
+
+    Use a variety of scanning and fingerprinting to determine information about target networks and devices.
+
+Phase 4: Exploitation/Initial Access
+
+    Gain intial foothold into target network
+
+    There is a more in-depth discussion that is done in exploitation research lesson
+
+Phase 5: Post-exploitation
+
+    Establish persistence
+
+    escalate priveleges
+
+    obfuscate
+
+    cover your tracks
+
+    exfiltrate target data
+
+Phase 6: Document Mission
+
+    Document and report mission details.
+=======================================================================================================
+
+
+Continuity of Operations
+
+    So you can pick up where you left off
+
+    So someone else can pick up where you left off
+
+Accounting of Actions Taken
+
+    Documentation may be a legal requirement
+
+    Prevent repudiation issues if you need to prove actions taken
+
+Ability to Repeat Exact Actions
+
+    Documenting what did work so it can be repeated
+
+Troubleshooting and lessons Learned
+
+    Documenting what didn’t work
+
+
+````````````````````````````````````````````````````````````````````````
+Tools Used:
+Along with the specific options, it’s important to record exactly what tools were used and how
+
+Timestamps: $$$$
+It’s important to know exactly when certain actions took place for purposes of deconflicting events outside of the given pentest. As an example, if during the pentest a real world attack also took place, you’d want to be able to differentiate which logs were explicitly caused by the pentesting team.
+
+Success:
+Noting what things worked and to what extent they were successful can be important when trying to reproduce your results
+
+Failure:
+Recording the things that didn’t work become equally important when trying to make an overall security assessment. Depending on the purpose behind the mission, recording what did not work and when may be important when it comes to being able to cover your tracks.
+
+Analytic Conclusions:
+If you have to make any assessments or generate any courses of action that differed from the originally planned mission, you’ll want to record those in your report as well. Showing the detailed result of when you made certain decisions based on what information you had available to you at the time is important when trying to walk somebody through your report and explaining your actions.
+
+Unexpected Results:
+When it comes to a Black Box pentest, there isn’t a whole lot of information provided up front, if any at all. The ability to plan an operation relies heavily on what’s found at each stage and continuing accordingly. There will still likely be expected results along the way as you use tried and true exploitation techniques against uncovered vulnerabilities. When those expected results don’t go the way you expect them to, it needs to be recorded so that they can be looked into. It could have failed as a result of another security product you were unaware of, or a recent signature update that you weren’t aware of. Either way, it’s something you want to record so it can be further tested and looked into for future tests. If you just lost a capability, future team is going to want to know about that.
+
+
+===========================================================================================================================
+
+
