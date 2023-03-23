@@ -71,6 +71,7 @@ Command Injection
 ssh-keygen -t rsa -b 4096
 cat id_rsa.pub
 find home dir (www)
+cat /etc/passwd
 :mkdir /var/www/.ssh
 : ls -la /var/www/
 copy entire public key 
