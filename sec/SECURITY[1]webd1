@@ -1,29 +1,18 @@
 WEB EXPLOITATION
 
 HTTP Response Codes
-
     10X == Informational
-
     2XX == Success
-
     30X == Redirection
-
     4XX == Client Error
-
     5XX == Server Erro
 
 HTTP Fields
-
     User-Agent
-
     Referer
-
     Cookie
-
     Date
-
     Server
-
     Set-Cookie
 
 
@@ -53,3 +42,4 @@ Enumeration
         NSE scripts
         Nikto
         Burp suite (outside class)
+        
