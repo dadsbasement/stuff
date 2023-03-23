@@ -65,6 +65,8 @@ Enumeration
    Ability to read/execute outside web server’s directory
     Uses ../../ (relative paths) in manipulating a server-side file path
 view_image.php?file=../../etc/passwd
+
+once on system cd /var/www/html/ for website backend
 ----------------------------------------------------------------
 
 Command Injection
