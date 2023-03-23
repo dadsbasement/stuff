@@ -11,3 +11,31 @@ HTTP Response Codes
     4XX == Client Error
 
     5XX == Server Erro
+
+HTTP Fields
+
+    User-Agent
+
+    Referer
+
+    Cookie
+
+    Date
+
+    Server
+
+    Set-Cookie
+
+
+GET request can be utilized to pass data to the server using the URL string:
+
+https://www.columbiacountyga.gov/Home/Components/JobPosts/Job/1/1/something.php?var=hi
+````````````````````````````````
+Wget
+
+wget -r -l2 -P /tmp ftp://ftpserver/
+wget --save-cookies cookies.txt --keep-session-cookies --post-data 'user=1&password=2' https://website
+wget --load-cookies cookies.txt -p https://website/interesting/article.php
+------------------------------------------------------------------------------------------
+curl -o stuff.html https://web.site/stuff.html
+curl 'https://web.site/submit.php' -H 'Cookie: name=123; settings=1,2,3,4,5,6,7' --data 'name=Stan' | base64 -d > item.png
