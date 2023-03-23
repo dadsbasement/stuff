@@ -60,6 +60,8 @@ Enumeration
     Capturing Sensitive Data
     document.body.innerHTM
 --------------------------------------------------------------------------
-    Ability to read/execute outside web server’s directory
+   Directory Traversal
+   
+   Ability to read/execute outside web server’s directory
     Uses ../../ (relative paths) in manipulating a server-side file path
 view_image.php?file=../../etc/passwd
