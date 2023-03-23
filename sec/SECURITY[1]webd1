@@ -1,0 +1,13 @@
+WEB EXPLOITATION
+
+HTTP Response Codes
+
+    10X == Informational
+
+    2XX == Success
+
+    30X == Redirection
+
+    4XX == Client Error
+
+    5XX == Server Erro
