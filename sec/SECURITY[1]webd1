@@ -42,4 +42,20 @@ Enumeration
         NSE scripts
         Nikto
         Burp suite (outside class)
-        
+  =============================================================================     
+ 
+ XSS
+   
+   Insertion of arbitrary code into a webpage, that executes in the browser of visitors
+    Unsanitized GET, POST, and PUT methods allow JS to be placed on websites
+    Often found in forums that allow HTML
+
+=================================================================================
+<script>alert('XSS');</script>
+
+    Capturing Cookies
+    document.cookie
+    Capturing Keystrokes
+        bind keydown and keyup
+    Capturing Sensitive Data
+    document.body.innerHTM
