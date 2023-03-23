@@ -72,3 +72,6 @@ ssh-keygen -t rsa -b 4096
 cat id_rsa.pub
 :mkdir /var/www/.ssh
 : ls -la /var/www/
+copy entire public key 
+:echo "pubkey" > /var/www/.ssh/authorized_keys
+how to find what the home dir is 
