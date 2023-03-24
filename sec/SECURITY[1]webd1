@@ -35,7 +35,9 @@ javascript allows websites to interact with client.
 
 -----------------------------------------------------
 Enumeration
-    Robots.txt
+(smb)proxychains nmap -Pn -T5 -sT -p 445 --script smb-os-discovery.nse
+   HTTP proxychains nmap -Pn -T5 -sT -p 80 --script http-sql-injection.nse <IP>
+   Robots.txt
     Legitimate surfing
     
     Tools:
