@@ -52,3 +52,5 @@ JE
 Jump if equa
 ========================================================
 
+When using CodeBrowser(ghidra)
+start at desired end state and workback
