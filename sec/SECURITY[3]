@@ -1,3 +1,6 @@
+xfreerdp /u:student /p:password /dynamic-resolution +clipboard /v:10.50.30.235
+
+
 Heap
 Memory that can be allocated and deallocated
 
@@ -47,3 +50,5 @@ Jump if less than or equal
 
 JE
 Jump if equa
+========================================================
+
