@@ -54,3 +54,7 @@ Jump if equa
 
 When using CodeBrowser(ghidra)
 start at desired end state and workback
+
+````````````````````````````````
+
+look for actual code. click on functions and see where they take you
