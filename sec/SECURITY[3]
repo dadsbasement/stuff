@@ -58,3 +58,6 @@ start at desired end state and workback
 ````````````````````````````````
 
 look for actual code. click on functions and see where they take you
+
+looking for the value that relies on the tgt var being created, look at the previous function and see which 
+part of the function creates the desired value.
