@@ -34,3 +34,10 @@ show env
 
 unset env COLUMNS
 usnet env LINES
+
+crash then type info proc map
+find /b 0xf7de1000, 0xffffe000, 0xff, 0xe4
+right after the heap one below
+end of the stack (END ADDR) column
+
+
