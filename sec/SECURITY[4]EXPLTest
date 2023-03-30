@@ -1,1 +1,6 @@
 
+Figure out how to interact with program
+
+if program takes input as parameter such as ./program  $(echo 'myparameter')
+
+or if if program prompts as user input. ./program <<<$(echo "user input")
