@@ -65,4 +65,5 @@ part of the function creates the desired value.
 
 patching ------------------------------------
 
-
+change JNZ on the if statement to JZ through modify patch for the if statement to swtitch and for it to 
+always be true
