@@ -4,3 +4,16 @@ Figure out how to interact with program
 if program takes input as parameter such as ./program  $(echo 'myparameter')
 
 or if if program prompts as user input. ./program <<<$(echo "user input")
+
+
+using gdb 
+info functions
+
+pdisas main
+pdsisas getuserinput
+
+
+run <<<$(python mybuff.py)
+Look at EIP REGISTER
+figure out what it exactly needs to overwrite the program
+wiremask.eu
