@@ -29,3 +29,8 @@ overwrite EIP (B * 4)
 then see where shell code lands
 shell = C * 30 
 
+env - gdb ./func
+show env
+
+unset env COLUMNS
+usnet env LINES
