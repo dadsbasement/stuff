@@ -22,3 +22,10 @@ copy script
 run <<<$(echo "script")
 copy eip register hex
 paste in  wiremask and it will give numerical offset
+
+
+adjust script.
+overwrite EIP (B * 4)
+then see where shell code lands
+shell = C * 30 
+
