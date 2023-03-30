@@ -17,3 +17,8 @@ run <<<$(python mybuff.py)
 Look at EIP REGISTER
 figure out what it exactly needs to overwrite the program
 wiremask.eu
+
+copy script
+run <<<$(echo "script")
+copy eip register hex
+paste in  wiremask and it will give numerical offset
