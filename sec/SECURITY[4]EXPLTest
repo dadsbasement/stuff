@@ -76,13 +76,16 @@ C:\Users\student>netstat -ano | findstr 2984
   TCP    0.0.0.0:9999           0.0.0.0:0              LISTENING       2984
 
 
+make sure 
 
+run the server, run debugger, attach server to debugger and press play
 
+make sure
+the correct ipaddr and port are running
+ipaddr is computer im running script from 
+i have buf = "TRUN /.:/" at the start followed by a test like buf += 'A' * 1000
 
-
-
-
-
+then run windows python script.
 
 
 in log data.  !mona modules  # list out all loadded dlls and protection 
