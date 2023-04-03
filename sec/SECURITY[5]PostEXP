@@ -48,6 +48,7 @@ hostname
 ip a / ifconfig
 ls -latr
 ls -latr ..
+ls -latr /tmp
 ps -elf  ignore [] processes 
 
 if rsyslogd running problem
@@ -66,3 +67,4 @@ nobody should be in root group.
 cat /etc/hosts  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 find / -type f -iname "log" 2>/dev/null
 find / -type f -iname "*.log" -exec md5sum {} \; 2>/dev/null
+find hidden directiories/files (change type) - find / -type d -name ".*" 2/dev/null
