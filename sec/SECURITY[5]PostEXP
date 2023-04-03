@@ -74,6 +74,10 @@ find / -type f -iname "log" 2>/dev/null
 find / -type f -iname "*.log" -exec md5sum {} \; 2>/dev/null
 find hidden directiories/files (change type) - find / -type d -name ".*" 2/dev/null
 ls -latr /etc/cron*/
+
+   Scheduled tasks
+    	ls -l /etc/cron*
+    	/var/spool/crontab
 ===========================================================================
 
 W I N D O W S
