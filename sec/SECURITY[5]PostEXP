@@ -8,4 +8,13 @@ ControlPath ~/.ssh/controlmasters/%r@%h:%p
 ControlMaster auto
 ControlPersist 10m
 
+
+ssh -MS /tmp/jump student@10.50.24.175 -this connection has to be open to do lower commands
+ssh -S /tmp/jump blah -O forward -L 1111:192.168.28.111:80
+ssh -S /tmp/jump blah -O forward -L 2222:192.168.28.111:8080
+ssh -S /tmp/jump blah -O cancel -L 2222:192.168.28.111:8080
+ssh -S /tmp/jump blah -O forward -L 3333:192.168.28.245:2222 ~~~~~ not actual location
+ssh -MS /tmp/t1 -p 3333 comrade@127.0.0.1
+ssh -S /tmp/t1 blah -O forward -D 9050 
+scp -o ControlPath="/tmp/t1" blah:/etc/passwd .
 ==============================================================
