@@ -65,3 +65,4 @@ cat /etc/passwd
 nobody should be in root group.
 cat /etc/hosts  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 find / -type f -iname "log" 2>/dev/null
+find / -type f -iname "*.log" -exec md5sum {} \; 2>/dev/null
