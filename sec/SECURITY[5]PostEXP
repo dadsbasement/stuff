@@ -47,6 +47,7 @@ dont touch 10.10 or 10.0
 
 once i get on box
 L I N U X 
+when it says enumerate user directories prety much means go through everyfile.
 whoami
 hostname
 ip a / ifconfig
@@ -59,7 +60,7 @@ if rsyslogd running problem
 cat /etc/rsyslog.conf
 cat /etc/rsyslog.d/*
 normal log location /var/log
-
+ 
 
 systemctl --type=service
 ss -ntlp
