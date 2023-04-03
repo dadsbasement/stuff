@@ -40,3 +40,28 @@ ncat --ssl <ip> <port> < <file>
 =====================================================================================
 
 dont touch 10.10 or 10.0
+
+once i get on box
+
+whoami
+hostname
+ip a / ifconfig
+ls -latr
+ls -latr ..
+ps -elf  ignore [] processes 
+
+if rsyslogd running problem
+cat /etc/rsyslog.conf
+cat /etc/rsyslog.d/*
+normal log location /var/log
+
+
+systemctl --type=service
+ss -ntlp
+netstat -anutp
+ip neigh
+cat /etc/group
+cat /etc/passwd
+nobody should be in root group.
+cat /etc/hosts  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+find / -type f -iname "log" 2>/dev/null
