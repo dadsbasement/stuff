@@ -1,0 +1,11 @@
+ssh -M -S /tmp/s root@<IP ADDRESS> <TUNNEL COMMANDS -R or -L>
+ssh -S /tmp/s x@x
+scp -o 'ControlPath=/tmp/s' x@x:<Path>
+
+Configuration File Method (~/.ssh/ssh_config)
+HostName *
+ControlPath ~/.ssh/controlmasters/%r@%h:%p
+ControlMaster auto
+ControlPersist 10m
+
+==============================================================
