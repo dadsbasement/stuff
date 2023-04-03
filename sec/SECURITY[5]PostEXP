@@ -5,6 +5,7 @@ WHEN SCP SPECIFY PORT WITH -P
 created a port to 3389 and ran this on linops
 
 +++++ MAKE SURE TO LOOK AT ALL TEXT FILES OR FILES THAT DIFFER FROM THE REST IN A DIR+++++++++=
+pay attention to keywords in ctfd and try searching key words
 ==============================================================
 
 local host enumeration
