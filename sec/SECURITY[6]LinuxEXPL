@@ -72,3 +72,36 @@ time edit files
 touch -c -t 201603051015 1.txt   # Explicit
 touch -r 3.txt 1.txt    # Reference
 ------------------------------
+
+
+which gdb
+sudo -l = something might not always be there
+gtfo bins for that binary
+ignore shell; = go for sudo
+do not try a mechanism that requires to update.
+
+copy the code and paste it
+make sure its !/bin/bash
+
+find / type f -perm /4000 2>/dev/null = looking for suid bit (sticky) 
+plug ALL into gtfobin.
+else 
+    find / type f -perm /2000 2>/dev/null = looking for suid bit (sticky)
+    find / type f -perm /6000 2>/dev/null = looking for suid bit (sticky)
+    
+============================================================
+Crontab
+if script leads to another script
+if it runs out of /tmp or users home directory
+net cat listener
+
+====================================
+cat /etc/sjhadow
+
+copy the whole entry
+
+john --wordlist=mywordlist.txt 
+or john sick_hash.txt - the shadow entry cp to a txt file
+
+once cracked john --show sick_hash.txt
+
