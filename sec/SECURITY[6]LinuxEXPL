@@ -1,5 +1,6 @@
 Zeus accounts?
-
+make SURE THAT when using john that the account hash 
+been perfectly copied over to a textfile.
 sudo -l 
 
 SUDO vuln.
