@@ -1,0 +1,27 @@
+Zeus accounts?
+
+sudo -l 
+
+SUDO vuln.
+    Commands that can access the contents of other files
+    https://gtfobins.github.io/gtfobins/tcpdump/
+    Dangerous commands
+    Commands that download files
+    Commands that execute other commands (i.e. editors)
+    Dangerous commands
+    
+Insecure Permissions    
+CRON
+World-Writable Files and Directories
+Dot '.' in PATH --- I AM NOT DOING THIS
+Home directory is not a worldwritable directory.
+Dont try to escalate through a file i own.
+
+dont know where to put something, put it in /tmp
+
+if somebody has . in path it can be exploited
+by creating an exectuable with the same name as a command
+and running something within this script.
+
++++(which gdb) probably is bufferoverflow++++
+ls -latr show recently modified at bottom
