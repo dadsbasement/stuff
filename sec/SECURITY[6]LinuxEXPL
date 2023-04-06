@@ -90,6 +90,10 @@ else
     find / type f -perm /2000 2>/dev/null = looking for sgid bit (sticky)
     find / type f -perm /6000 2>/dev/null = looking for suid&sguid bit (sticky)
     
+    
+    /etc/sudoers is way to escalate privileges.
+    if the file/program is owned by root and the program can append 
+    i can add an entry into the sudoers file.
 ============================================================
 Crontab
 if script leads to another script
