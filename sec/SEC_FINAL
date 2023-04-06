@@ -1,0 +1,29 @@
+immediate interesting commands
+
+WHEN SCP SPECIFY PORT WITH -P
+we have to fix NETCAT? follow the net cat path and chmod the endfile
+
+
+
+
+
+
+
+
+
+
+
+Linux Exploit
+Zeus accounts?
+make SURE THAT when using john that the account hash 
+been perfectly copied over to a textfile.
+sudo -l 
+grep 'extra\|value' sample.txt
+
+ windows exploit
+   where /r c:\windows ntoskrnl.exe
+   everytime i scp a new file i have to RESTART MACHINE
+   
+
+----------------------------------------------------------------------------------
+ 
