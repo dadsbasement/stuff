@@ -97,7 +97,7 @@ if it runs out of /tmp or users home directory
 net cat listener
 
 ====================================
-cat /etc/sjhadow
+cat /etc/shhadow
 
 copy the whole entry
 
