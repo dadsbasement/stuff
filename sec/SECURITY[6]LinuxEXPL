@@ -113,8 +113,6 @@ once cracked john --show sick_hash.txt
 ======================================
 ===================================
 
-
-
 questions
 Once you obtain root access, you are to implement persistence using a reverse bash shell via CRON.
 The IP address and port for the reverse shell will be supplied to you. IP: 192.168.28.135 Port: 33403
