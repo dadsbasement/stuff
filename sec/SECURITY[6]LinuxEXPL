@@ -87,8 +87,8 @@ make sure its !/bin/bash
 find / type f -perm /4000 2>/dev/null = looking for suid bit (sticky) 
 plug ALL into gtfobin.
 else 
-    find / type f -perm /2000 2>/dev/null = looking for suid bit (sticky)
-    find / type f -perm /6000 2>/dev/null = looking for suid bit (sticky)
+    find / type f -perm /2000 2>/dev/null = looking for sgid bit (sticky)
+    find / type f -perm /6000 2>/dev/null = looking for suid&sguid bit (sticky)
     
 ============================================================
 Crontab
