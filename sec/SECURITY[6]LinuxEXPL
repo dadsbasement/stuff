@@ -2,6 +2,8 @@ Zeus accounts?
 make SURE THAT when using john that the account hash 
 been perfectly copied over to a textfile.
 sudo -l 
+grep 'extra\|value' sample.txt
+
 
 SUDO vuln.
     Commands that can access the contents of other files
