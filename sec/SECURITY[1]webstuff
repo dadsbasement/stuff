@@ -73,7 +73,11 @@ once on system cd /var/www/html/ for website backend
 ----------------------------------------------------------------
 based around user WWW-data
 
-
+malicious file
+copy webshell script
+name it file.php
+upload
+/uploads click it
 
 
 
