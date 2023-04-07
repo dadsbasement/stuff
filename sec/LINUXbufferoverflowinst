@@ -89,3 +89,6 @@ add all that to script and add buf variable to print statement
 
 
 troubleshooting
+
+sudo ./vulnfunc <<< $(python linbuff.py)
+if i do this i dont need sudo in shellcode (msfvenom)
