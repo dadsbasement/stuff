@@ -68,3 +68,10 @@ grab below heap and right above stack
 
 
 find /b 0xf7de1000, 0xf7ffe000, 0xff, 0xe4
+
+
+grab like 6 of themp and put them in script and comment out
+
+#0xf7 f6 55 cf =  eip = '\xcf\x55\xf6\xf7'
+#0xf7 f6 57 77  
+
