@@ -1,5 +1,5 @@
 REVERSE ENGINEERING- query registry CONFIRM WHAT THEY ARE RUN KEYS ON GOOGLE 
-
+auditpol /get /category:* | findstr  /i 'success faulure' -privileged users
 
 immediate interesting commands
 
