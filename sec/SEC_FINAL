@@ -5,9 +5,8 @@ we have to fix NETCAT? follow the net cat path and chmod the endfile
 
 
 
-
-
-
+10.50.29.198
+DYWA-002-M
 
 
 
@@ -27,5 +26,74 @@ grep 'extra\|value' sample.txt
 
 ----------------------------------------------------------------------------------
  
-10.50.29.198
-DYWA-002-M
+
+nmap -Pn -T4 (-n) --min-rate 8888888888888 10.50.29.198 -p 80,8080,22,2222,4444,9999,21,3389,1-1024
+paste results in notes
+
+nc 10.50.29.198 22
+SSH SSH  - add this banner to the nmap scan notes
+
+nc 10.50.29.198 80
+!DOCTYPE HTML PUBLIC
+
+it might hang
+type a letter and press enter
+
+3389 is always RDP
+
+
+PORT INTEROGATIOn 
+nmap -Pn -T4 (-n) --min-rate 8888888888888 10.50.29.198 -p 80 --script http-enum.nse
+nmap --script http-enum 
+/login
+/script
+
+if i use nikto proxychains redirect to 2>/dev/null
+nikto -h ip 
+might not work
+
+
+firefox to website
+login page ' or 1='1 (check spaces) for username passwd 
+
+another method
+dev console got to the post request
+goto response  and convert it to raw
+copy entire thing and add a question mark to url and paste
+login.php?username='+or+1%3D'1+&passwd='+or+1%3D'1+
+
+only encode is rot13 /base64 
+
+cmd injection if ; whoami doesnt work then it dont work
+if it does work upload ssh key immediately
+
+``````
+directory traversal
+
+../ * 6
+
+-------------
+malicious file upload
+most likely .php maybe .py
+i have to able to find where its uploading to
+
+----------------------------
+logging into box
+enumerate /etc/hosts  .. .. ..
+privilege escapation 
+find -perm /4000 and /2000 last effort /6000
+if nun
+check for gdb
+if nun 
+check crontab, sys dirs 
+if nun i cant escalate
+
+look at network maps, ip a , you can ping the name of ip in hetc host
+
+--------------------------------------
+setup proxychains and scan next tgt using script (i can redirect nmap 2>/dev/null)
+check if ssh creds work
+-------------------
+PRODUCT SELECTION
+
+look for tables and colmuns
