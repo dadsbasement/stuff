@@ -59,6 +59,7 @@ WEB STUFF
 
 firefox to website
 login page ' or 1='1 (check spaces) for username passwd 
+           'OR '1'='1
 
 another method
 dev console got to the post request
